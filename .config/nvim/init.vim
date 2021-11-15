@@ -47,7 +47,15 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'puremourning/vimspector'
+" Debugger Plugins
+"Plug 'puremourning/vimspector'
+Plug 'mfussenegger/nvim-dap'
+Plug 'Pocco81/DAPInstall.nvim'
+Plug 'szw/vim-maximizer'
+Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'rcarriga/nvim-dap-ui'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 "Plug 'preservim/nerdtree'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -55,7 +63,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-commentary'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-Plug 'szw/vim-maximizer'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
@@ -95,13 +102,43 @@ nnoremap <leader>so :source $MYVIMRC<CR>
 nnoremap <leader>cn :cn<CR>
 nnoremap <leader>cp :cp<CR>
 
-" TELESCOPE SETTINGS
 lua require('main')
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
-nnoremap <leader>pf :lua require('telescope.builtin').find_files()<CR>
-nnoremap <leader>pb :lua require('telescope.builtin').buffers()<CR>
-nnoremap <leader>fb :lua require('telescope.builtin').file_browser{hidden=true}<CR>
-nnoremap <leader>sd :lua require('main.telescope').search_dotfiles()<CR>
+" TELESCOPE SETTINGS
+nnoremap <leader>tg :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+nnoremap <leader>tf :lua require('telescope.builtin').find_files()<CR>
+nnoremap <leader>tb :lua require('telescope.builtin').buffers()<CR>
+nnoremap <leader>te :lua require('telescope.builtin').file_browser{hidden=true}<CR>
+nnoremap <leader>td :lua require('main.telescope').search_dotfiles()<CR>
+
+" mfussenegger/nvim-dap
+nnoremap <leader>dt :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <S-h> :lua require'dap'.step_out()<CR>
+nnoremap <S-l> :lua require'dap'.step_into()<CR>
+nnoremap <S-j> :lua require'dap'.step_over()<CR>
+nnoremap <leader>ds :lua require'dap'.stop()<CR>
+nnoremap <leader>dn :lua require'dap'.continue()<CR>
+nnoremap <leader>dk :lua require'dap'.up()<CR>
+nnoremap <leader>dj :lua require'dap'.down()<CR>
+nnoremap <leader>d_ :lua require'dap'.disconnect();require'dap'.stop();require'dap'.run_last()<CR>
+nnoremap <leader>dr :lua require'dap'.repl.open({}, 'vsplit')<CR><C-w>l
+"nnoremap <leader>di :lua require'dap.ui.variables'.hover()<CR>
+nnoremap <leader>dh :lua require'dap.ui.widgets'.hover()<CR>
+vnoremap <leader>dh :lua require'dap.ui.variables'.visual_hover()<CR>
+"nnoremap <leader>d? :lua require'dap.ui.variables'.scopes()<CR>
+nnoremap <leader>d? :lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>
+nnoremap <leader>de :lua require'dap'.set_exception_breakpoints({"all"})<CR>
+nnoremap <leader>da :lua require'main.debugHelper'.attach()<CR>
+"nnoremap <leader>dA :lua require'debugHelper'.attachToRemote()<CR>
+
+" nvim-telescope/telescope-dap.nvim
+nnoremap <leader>df :Telescope dap frames<CR>
+nnoremap <leader>dc :Telescope dap commands<CR>
+nnoremap <leader>db :Telescope dap list_breakpoints<CR>
+nnoremap <leader>dv :Telescope dap variables<CR>
+nnoremap <leader>dcf :Telescope dap configurations<CR>
+
+" rcarriga/nvim-dap-ui
+nnoremap <leader>du :lua require('dapui').toggle()<CR>
 
 " NETRW SETTINGS
 let g:netrw_liststyle=3
