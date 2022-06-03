@@ -33,3 +33,5 @@ end
 
 # this is for integrate conda with fish shell
 source (conda info --root)/etc/fish/conf.d/conda.fish
+
+starship init fish | source
