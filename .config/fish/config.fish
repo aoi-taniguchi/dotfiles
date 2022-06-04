@@ -31,7 +31,4 @@ function fish_user_key_bindings
   bind \cr peco_select_history
 end
 
-# this is for integrate conda with fish shell
-source (conda info --root)/etc/fish/conf.d/conda.fish
-
 starship init fish | source
