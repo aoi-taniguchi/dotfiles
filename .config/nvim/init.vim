@@ -74,11 +74,15 @@ Plug 'rcarriga/nvim-dap-ui'
 " Formatter Plugins
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
+" Terminal integration
+Plug 'akinsho/toggleterm.nvim', { 'tag': 'v1.*' }
+
 " Tmux integration
 Plug 'christoomey/vim-tmux-navigator'
 
 " Git integration
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 
 " For fun
@@ -117,12 +121,14 @@ nnoremap <leader>ls :ls<CR>
 "" <C-w>w (switching vim window)
 
 " open explore in lhs of current buffer
-nnoremap <leader>e :Lexplore<CR>
+" this won't work...
+" nnoremap <leader>e :Lexplore<CR>
 
 " source init.vim
 nnoremap <leader>so :source $MYVIMRC<CR>
 
 " QUICKFIX LIST
+nnoremap <leader>co :copen<CR>
 nnoremap <leader>cn :cn<CR>
 nnoremap <leader>cp :cp<CR>
 
@@ -152,7 +158,7 @@ vnoremap <leader>dh :lua require'dap.ui.variables'.visual_hover()<CR>
 "nnoremap <leader>d? :lua require'dap.ui.variables'.scopes()<CR>
 nnoremap <leader>d? :lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>
 nnoremap <leader>de :lua require'dap'.set_exception_breakpoints({"all"})<CR>
-nnoremap <leader>da :lua require'main.debugHelper'.attach()<CR>
+nnoremap <leader>da :lua require'me.debugHelper'.attach()<CR>
 "nnoremap <leader>dA :lua require'debugHelper'.attachToRemote()<CR>
 
 " nvim-telescope/telescope-dap.nvim
