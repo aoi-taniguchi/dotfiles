@@ -21,12 +21,12 @@ require("dapui").setup({
       { id = "stacks", size = 0.25 },
       { id = "watches", size = 00.25 },
     },
-    size = 50,
+    size = 40,
     position = "left", -- Can be "left", "right", "top", "bottom"
   },
   tray = {
     elements = { "repl" },
-    size = 15,
+    size = 10,
     position = "bottom", -- Can be "left", "right", "top", "bottom"
   },
   floating = {

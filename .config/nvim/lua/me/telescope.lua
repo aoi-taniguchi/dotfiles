@@ -1,0 +1,69 @@
+local actions = require('telescope.actions')
+local fb_actions = require('telescope._extensions.file_browser.actions')
+
+require('telescope').setup {
+    defaults = {
+        file_sorter = require('telescope.sorters').get_fzy_sorter,
+        prompt_prefix = ' >',
+        color_devicons = true,
+
+        file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
+        grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
+        qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+
+        layout_strategy = 'flex',
+
+        mappings = {
+            i = {
+                ["<C-j>"] = actions.move_selection_next,
+                ["<C-k>"] = actions.move_selection_previous,
+                ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+            },
+            n = {
+                ["<C-j>"] = actions.move_selection_next,
+                ["<C-k>"] = actions.move_selection_previous,
+                ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+            },
+        },
+    },
+    extensions = {
+        fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true,
+        },
+        file_browser = {
+            hijack_netrw = true,
+            mappings = {
+                ["i"] = {
+                    ["<C-g>"]  = fb_actions.goto_parent_dir,
+                    ["<C-e>"]  = fb_actions.goto_home_dir,
+                    ["<C-w>"]  = fb_actions.goto_cwd,
+                    ["<C-t>"]  = fb_actions.change_cwd,
+                    ["<C-c>"]  = fb_actions.create,
+                    ["<C-CR>"] = fb_actions.create_from_prompt,
+                    ["<C-r>"]  = fb_actions.rename,
+                    ["<C-m>"]  = fb_actions.move,
+                    ["<C-y>"]  = fb_actions.copy,
+                    ["<C-d>"]  = fb_actions.remove,
+                    ["<C-o>"]  = fb_actions.open,
+                    ["<C-f>"]  = fb_actions.toggle_browser,
+                    ["<C-h>"]  = fb_actions.toggle_hidden,
+                    ["<C-s>"]  = fb_actions.toggle_all,
+                },
+            },
+        },
+    },
+}
+
+require('telescope').load_extension('fzy_native')
+require('telescope').load_extension('file_browser')
+
+local M = {}
+M.search_dotfiles = function()
+    require("telescope.builtin").find_files({
+        prompt_title = "< dotfiles >",
+        cwd = "~/.config/",
+    })
+end
+
+return M

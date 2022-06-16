@@ -37,37 +37,61 @@ set colorcolumn=80
 set showmatch
 set laststatus=2
 set wildmode=list:longest
+set autochdir
 syntax enable
 
 " PLUGIN SETTINGS
 call plug#begin('~/.config/nvim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tyrannicaltoucan/vim-deep-space'
+
+" Telescope Plugins
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+" Coc Plugin
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Lsp Plugins
+Plug 'neovim/nvim-lspconfig'
+"Plug 'hrsh7th/cmp-nvim-lsp'
+"Plug 'hrsh7th/cmp-buffer'
+"Plug 'hrsh7th/cmp-path'
+"Plug 'hrsh7th/cmp-cmdline'
+"Plug 'hrsh7th/nvim-cmp'
+"Plug 'hrsh7th/cmp-vsnip'
+"Plug 'hrsh7th/vim-vsnip'
+
 " Debugger Plugins
-"Plug 'puremourning/vimspector'
 Plug 'mfussenegger/nvim-dap'
-Plug 'Pocco81/DAPInstall.nvim'
 Plug 'szw/vim-maximizer'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
-"Plug 'preservim/nerdtree'
-"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'airblade/vim-gitgutter'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'tpope/vim-commentary'
+
+" Formatter Plugins
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+" Tmux integration
+Plug 'christoomey/vim-tmux-navigator'
+
+" Git integration
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-commentary'
+
+" For fun
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
+Plug 'tyrannicaltoucan/vim-deep-space'
+
+" Markdown
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
+
 call plug#end()
+
 
 " deep-space SETTINGS
 set background=dark
@@ -102,24 +126,25 @@ nnoremap <leader>so :source $MYVIMRC<CR>
 nnoremap <leader>cn :cn<CR>
 nnoremap <leader>cp :cp<CR>
 
-lua require('main')
+lua require('me')
 " TELESCOPE SETTINGS
-nnoremap <leader>tg :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
-nnoremap <leader>tf :lua require('telescope.builtin').find_files()<CR>
-nnoremap <leader>tb :lua require('telescope.builtin').buffers()<CR>
-nnoremap <leader>te :lua require('telescope.builtin').file_browser{hidden=true}<CR>
-nnoremap <leader>td :lua require('main.telescope').search_dotfiles()<CR>
+nnoremap <leader>fe :lua require('telescope').extensions.file_browser.file_browser()<CR>
+nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
+"nnoremap <leader>gs :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+nnoremap <leader>lg :lua require('telescope.builtin').live_grep()<CR>
+nnoremap <leader>bb :lua require('telescope.builtin').buffers()<CR>
+nnoremap <leader>sd :lua require('me.telescope').search_dotfiles()<CR>
 
 " mfussenegger/nvim-dap
 nnoremap <leader>dt :lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <S-h> :lua require'dap'.step_out()<CR>
 nnoremap <S-l> :lua require'dap'.step_into()<CR>
 nnoremap <S-j> :lua require'dap'.step_over()<CR>
-nnoremap <leader>ds :lua require'dap'.stop()<CR>
+nnoremap <leader>ds :lua require'dap'.close()<CR>
 nnoremap <leader>dn :lua require'dap'.continue()<CR>
 nnoremap <leader>dk :lua require'dap'.up()<CR>
 nnoremap <leader>dj :lua require'dap'.down()<CR>
-nnoremap <leader>d_ :lua require'dap'.disconnect();require'dap'.stop();require'dap'.run_last()<CR>
+nnoremap <leader>d_ :lua require'dap'.disconnect();require'dap'.close();require'dap'.run_last()<CR>
 nnoremap <leader>dr :lua require'dap'.repl.open({}, 'vsplit')<CR><C-w>l
 "nnoremap <leader>di :lua require'dap.ui.variables'.hover()<CR>
 nnoremap <leader>dh :lua require'dap.ui.widgets'.hover()<CR>
@@ -156,8 +181,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " vim-maximizer SETTINGS
-"!This will cause enter-not-working issue
-"let g:maximizer_default_mapping_key = '<C-m>'
+nnoremap <leader>m :MaximizerToggle<CR>
 
 " Esc SETTINGS
 inoremap <C-c> <Esc>
@@ -175,4 +199,3 @@ augroup GROUP1
     autocmd!
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
-
