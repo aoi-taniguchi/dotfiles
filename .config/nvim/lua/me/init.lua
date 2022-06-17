@@ -1,6 +1,6 @@
 require('me.telescope')
 require('me.coc')
-require('me.lsp')
+--require('me.lsp')
 require('me.nvim-dap')
 require('me.telescope-dap')
 require('me.nvim-dap-virtual-text')
