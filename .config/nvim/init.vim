@@ -83,6 +83,8 @@ Plug 'christoomey/vim-tmux-navigator'
 " Git integration
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-commentary'
 
 " For fun
@@ -101,6 +103,9 @@ call plug#end()
 set background=dark
 set termguicolors
 colorscheme deep-space
+
+" clear highlight search
+nnoremap <C-l> :noh<CR>
 
 let mapleader = " "
 
