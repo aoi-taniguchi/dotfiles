@@ -53,15 +53,10 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " Coc Plugin
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Lsp Plugins
-Plug 'neovim/nvim-lspconfig'
-"Plug 'hrsh7th/cmp-nvim-lsp'
-"Plug 'hrsh7th/cmp-buffer'
-"Plug 'hrsh7th/cmp-path'
-"Plug 'hrsh7th/cmp-cmdline'
-"Plug 'hrsh7th/nvim-cmp'
-"Plug 'hrsh7th/cmp-vsnip'
-"Plug 'hrsh7th/vim-vsnip'
+" Snnipet Plugins
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+" ^ see https://github.com/honza/vim-snippets/tree/master/snippets for details
 
 " Debugger Plugins
 Plug 'mfussenegger/nvim-dap'
@@ -98,6 +93,10 @@ Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
 
 call plug#end()
 
+" ultisnips SETTINGS
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsJumpForwardTrigger='<C-b>'
+let g:UltiSnipsJunpBackwardTrigger='<C-z>'
 
 " deep-space SETTINGS
 set background=dark
