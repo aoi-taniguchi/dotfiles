@@ -1,7 +1,6 @@
--- toggleterm doesn't work unless manually source it
 require('toggleterm').setup {
     size = 10,
-    open_mapping = [[<c-\>]],
+    open_mapping = [[<c-]>]],
     shading_factor = 2,
     direction = "float",
     float_opts = {
