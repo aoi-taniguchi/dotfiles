@@ -41,6 +41,8 @@ set autochdir
 syntax enable
 
 " PLUGIN SETTINGS
+let g:python3_host_prog = '~/work/venv1/bin/python'
+
 call plug#begin('~/.config/nvim/plugged')
 
 " Telescope Plugins
@@ -52,6 +54,7 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Coc Plugin
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 
 " Snnipet Plugins
 Plug 'SirVer/ultisnips'
@@ -62,14 +65,17 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'szw/vim-maximizer'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'theHamsta/nvim-dap-virtual-text'
-Plug 'rcarriga/nvim-dap-ui'
+Plug 'rcarriga/nvim-dap-ui', {'commit': '85b266e20e45004a86b51f13293129b01e2dcf3b'}
 
 " Formatter Plugins
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'psf/black'
+Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
+Plug 'prettier/vim-prettier', {'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']}
 
 " Terminal integration
-Plug 'akinsho/toggleterm.nvim', { 'tag': 'v1.*' }
+Plug 'akinsho/toggleterm.nvim', {'tag': 'v1.*'}
 
 " Tmux integration
 Plug 'christoomey/vim-tmux-navigator'
@@ -191,6 +197,9 @@ nnoremap <leader>dcf :Telescope dap configurations<CR>
 
 " rcarriga/nvim-dap-ui
 nnoremap <leader>du :lua require('dapui').toggle()<CR>
+
+" black
+nnoremap <leader>k :Black<CR>
 
 " vim-maximizer SETTINGS
 nnoremap <leader>m :MaximizerToggle<CR>

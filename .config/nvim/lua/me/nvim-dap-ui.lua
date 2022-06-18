@@ -1,4 +1,3 @@
---require('dapui').setup()
 require("dapui").setup({
   icons = { expanded = "▾", collapsed = "▸" },
   mappings = {
