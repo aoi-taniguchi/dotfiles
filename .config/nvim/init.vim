@@ -45,6 +45,10 @@ let g:python3_host_prog = '~/work/venv1/bin/python'
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Greeter
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'goolord/alpha-nvim'
+
 " Telescope Plugins
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -57,6 +61,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 
 " Snnipet Plugins
+Plug 'jiangmiao/auto-pairs'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -73,6 +78,9 @@ Plug 'rcarriga/nvim-dap-ui', {'commit': '85b266e20e45004a86b51f13293129b01e2dcf3
 Plug 'psf/black'
 Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'prettier/vim-prettier', {'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']}
+
+" Lint
+Plug 'dense-analysis/ale'
 
 " Terminal integration
 Plug 'akinsho/toggleterm.nvim', {'tag': 'v1.*'}
