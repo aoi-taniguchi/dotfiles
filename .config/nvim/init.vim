@@ -56,7 +56,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Snnipet Plugins
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-" ^ see https://github.com/honza/vim-snippets/tree/master/snippets for details
 
 " Debugger Plugins
 Plug 'mfussenegger/nvim-dap'
@@ -80,7 +79,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
+Plug 'kdheepak/lazygit.nvim'
 Plug 'tpope/vim-commentary'
+
+" Search and move
+Plug 'easymotion/vim-easymotion'
+
+" Markdown
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
 
 " For fun
 Plug 'vim-airline/vim-airline'
@@ -88,31 +94,17 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tyrannicaltoucan/vim-deep-space'
 
-" Markdown
-Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
-
 call plug#end()
 
-" ultisnips SETTINGS
-let g:UltiSnipsEditSplit='vertical'
-let g:UltiSnipsJumpForwardTrigger='<C-b>'
-let g:UltiSnipsJunpBackwardTrigger='<C-z>'
 
-" deep-space SETTINGS
-set background=dark
-set termguicolors
-colorscheme deep-space
+" Esc SETTINGS
+inoremap <C-c> <Esc>
+
+" SPLIT BORDER SETTINGS
+"hi VertSplit cterm=none
 
 " clear highlight search
 nnoremap <C-l> :noh<CR>
-
-let mapleader = " "
-
-" switching buffer SETTINGS
-nnoremap <leader>bp :bprevious<CR>
-nnoremap <leader>bn :bnext<CR>
-nnoremap <leader>q  :bdelete<CR>
-nnoremap <leader>ls :ls<CR>
 
 " splitting vim window
 "" :sp[lit] file
@@ -124,9 +116,28 @@ nnoremap <leader>ls :ls<CR>
 "" <C-w>x (exchanging vim window)
 "" <C-w>w (switching vim window)
 
-" open explore in lhs of current buffer
-" this won't work...
-" nnoremap <leader>e :Lexplore<CR>
+" deep-space SETTINGS
+set background=dark
+set termguicolors
+colorscheme deep-space
+
+" Airline SETTINGS
+let g:airline_theme = 'lucius'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" ultisnips SETTINGS
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsJumpForwardTrigger='<C-b>'
+let g:UltiSnipsJunpBackwardTrigger='<C-z>'
+
+
+let mapleader = " "
+
+" switching buffer SETTINGS
+nnoremap <leader>bp :bprevious<CR>
+nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>q  :bdelete<CR>
 
 " source init.vim
 nnoremap <leader>so :source $MYVIMRC<CR>
@@ -136,8 +147,14 @@ nnoremap <leader>co :copen<CR>
 nnoremap <leader>cn :cn<CR>
 nnoremap <leader>cp :cp<CR>
 
+" ToggleTerm
+nnoremap <silent> <leader>gg :lua lazygit_toggle()<CR>
+nnoremap <silent> <leader>hh :lua htop_toggle()<CR>
+nnoremap <silent> <leader>pp :lua python_toggle()<CR>
+
 lua require('me')
-" TELESCOPE SETTINGS
+
+" Telescope
 nnoremap <leader>fe :lua require('telescope').extensions.file_browser.file_browser()<CR>
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
 "nnoremap <leader>gs :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
@@ -175,29 +192,9 @@ nnoremap <leader>dcf :Telescope dap configurations<CR>
 " rcarriga/nvim-dap-ui
 nnoremap <leader>du :lua require('dapui').toggle()<CR>
 
-" NETRW SETTINGS
-let g:netrw_liststyle=3
-let g:netrw_preview=1
-let g:netrw_banner=0
-
-" NERDTree SETTINGS
-""nnoremap <leader>n :NERDTreeToggle<CR>
-""let NERDTreeShowHidden=1
-""let NERDTreeMinimalUI=1
-
-" Airline SETTINGS
-let g:airline_theme = 'lucius'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-
 " vim-maximizer SETTINGS
 nnoremap <leader>m :MaximizerToggle<CR>
 
-" Esc SETTINGS
-inoremap <C-c> <Esc>
-
-" SPLIT BORDER SETTINGS
-"hi VertSplit cterm=none
 
 fun! TrimWhitespace()
     let l:save = winsaveview()
