@@ -38,6 +38,7 @@ set showmatch
 set laststatus=2
 set wildmode=list:longest
 set autochdir
+set updatetime=300
 syntax enable
 
 " PLUGIN SETTINGS
@@ -48,6 +49,9 @@ call plug#begin('~/.config/nvim/plugged')
 " Greeter
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'goolord/alpha-nvim'
+
+" Which key
+Plug 'folke/which-key.nvim'
 
 " Telescope Plugins
 Plug 'nvim-lua/popup.nvim'
@@ -78,9 +82,6 @@ Plug 'rcarriga/nvim-dap-ui', {'commit': '85b266e20e45004a86b51f13293129b01e2dcf3
 Plug 'psf/black'
 Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'prettier/vim-prettier', {'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']}
-
-" Lint
-Plug 'dense-analysis/ale'
 
 " Terminal integration
 Plug 'akinsho/toggleterm.nvim', {'tag': 'v1.*'}
@@ -151,6 +152,9 @@ let mapleader = " "
 " greeter
 nnoremap <leader>a :Alpha<CR>
 
+" which-key
+nnoremap <leader>w :WhichKey<CR>
+
 " switching buffer SETTINGS
 nnoremap <leader>bp :bprevious<CR>
 nnoremap <leader>bn :bnext<CR>
@@ -181,6 +185,7 @@ nnoremap <leader>sg :lua require('telescope').extensions.lazygit.lazygit()<CR>
 
 " mfussenegger/nvim-dap
 nnoremap <leader>dt :lua require'dap'.toggle_breakpoint()<CR>
+"nnoremap <leader>dc :lua require'dap'.clear_breakpoints()<CR>
 nnoremap <S-h> :lua require'dap'.step_out()<CR>
 nnoremap <S-l> :lua require'dap'.step_into()<CR>
 nnoremap <S-j> :lua require'dap'.step_over()<CR>
@@ -215,6 +220,59 @@ nnoremap <leader>k :Black<CR>
 " vim-maximizer SETTINGS
 nnoremap <leader>m :MaximizerToggle<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""
+" For coc.nvim (TODO: move these to lua file!)
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+fun! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfun
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>fs  <Plug>(coc-format-selected)
+nmap <leader>fs  <Plug>(coc-format-selected)
+""""""""""""""""""""""""""""""""""""""""""""""""
 
 fun! TrimWhitespace()
     let l:save = winsaveview()
@@ -226,4 +284,8 @@ augroup GROUP1
     autocmd!
     autocmd BufWritePre * :call TrimWhitespace()
     autocmd BufEnter * :lua require('lazygit.utils').project_root_dir()
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END
