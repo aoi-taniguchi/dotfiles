@@ -52,7 +52,7 @@ Plug 'goolord/alpha-nvim'
 " Telescope Plugins
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope.nvim', {'commit': '85d95dfdddba7077257a5fa3eb6dd57caf12579f'}
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
@@ -148,6 +148,9 @@ let g:UltiSnipsJunpBackwardTrigger='<C-z>'
 
 let mapleader = " "
 
+" greeter
+nnoremap <leader>a :Alpha<CR>
+
 " switching buffer SETTINGS
 nnoremap <leader>bp :bprevious<CR>
 nnoremap <leader>bn :bnext<CR>
@@ -171,10 +174,10 @@ lua require('me')
 " Telescope
 nnoremap <leader>fe :lua require('telescope').extensions.file_browser.file_browser()<CR>
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
-"nnoremap <leader>gs :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
 nnoremap <leader>lg :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>bb :lua require('telescope.builtin').buffers()<CR>
 nnoremap <leader>sd :lua require('me.telescope').search_dotfiles()<CR>
+nnoremap <leader>sg :lua require('telescope').extensions.lazygit.lazygit()<CR>
 
 " mfussenegger/nvim-dap
 nnoremap <leader>dt :lua require'dap'.toggle_breakpoint()<CR>
@@ -222,4 +225,5 @@ endfun
 augroup GROUP1
     autocmd!
     autocmd BufWritePre * :call TrimWhitespace()
+    autocmd BufEnter * :lua require('lazygit.utils').project_root_dir()
 augroup END
