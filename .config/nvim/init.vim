@@ -101,6 +101,7 @@ Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
 
 " Markdown
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
 
 " For fun
@@ -219,6 +220,20 @@ nnoremap <leader>k :Black<CR>
 
 " vim-maximizer SETTINGS
 nnoremap <leader>m :MaximizerToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" For vim-table-mode (nnoremap <leader>tm to toggle)
+""""""""""""""""""""""""""""""""""""""""""""""""
+fun! s:isAtStartOfLine(mapping)
+  let text_before_cursor = getline('.')[0 : col('.')-1]
+  let mapping_pattern = '\V' . escape(a:mapping, '\')
+  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+endfun
+
+inoreabbrev <expr> <bar><bar>
+          \ <SID>isAtStartOfLine('\|\|') ?
+          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " For coc.nvim (TODO: move these to lua file!)
