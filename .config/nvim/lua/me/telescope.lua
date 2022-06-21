@@ -32,6 +32,7 @@ require('telescope').setup {
             override_file_sorter = true,
         },
         file_browser = {
+	    hidden = true,
             hijack_netrw = true,
             mappings = {
                 ["i"] = {
@@ -52,12 +53,17 @@ require('telescope').setup {
                 },
             },
         },
+	media_files = {
+		filetypes = {'png', 'jpg', 'jpeg', 'pdf'},
+		find_cmd = 'rg'
+	},
     },
 }
 
 require('telescope').load_extension('fzy_native')
 require('telescope').load_extension('file_browser')
 require('telescope').load_extension('lazygit')
+require('telescope').load_extension('media_files')
 
 local M = {}
 M.search_dotfiles = function()

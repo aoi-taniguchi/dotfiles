@@ -1,45 +1,4 @@
-set path+=**
-
-" Nice menu and autocompletion
-set wildmode=longest,list,full
-set wildmenu
-" Ignore files
-set wildignore+=**/.git/*
-
-let g:airline#extensions#tabline#enabled = 1
-scriptencoding utf-8
-
-set fenc=utf-8
-set autoindent
-set showcmd
-
-set hlsearch
-set incsearch
-set ignorecase
-
-set nobackup
-set noswapfile
-set autoread
-
-set relativenumber
-set nu
-set guicursor=
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-set hidden
-set noerrorbells
-set nowrap
-set scrolloff=8
-set signcolumn=yes
-set colorcolumn=80
-set showmatch
-set laststatus=2
-set wildmode=list:longest
-set autochdir
-set updatetime=300
-syntax enable
+lua require('core.options')
 
 " PLUGIN SETTINGS
 let g:python3_host_prog = '~/work/venv1/bin/python'
@@ -59,6 +18,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', {'commit': '85d95dfdddba7077257a5fa3eb6dd57caf12579f'}
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'nvim-telescope/telescope-media-files.nvim'
 
 " Coc Plugin
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -77,11 +37,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui', {'commit': '85b266e20e45004a86b51f13293129b01e2dcf3b'}
-
-" Formatter Plugins
-Plug 'psf/black'
-Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'prettier/vim-prettier', {'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']}
 
 " Terminal integration
 Plug 'akinsho/toggleterm.nvim', {'tag': 'v1.*'}
@@ -102,7 +57,7 @@ Plug 'easymotion/vim-easymotion'
 
 " Markdown
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 
 " For fun
 Plug 'vim-airline/vim-airline'
@@ -133,8 +88,6 @@ nnoremap <C-l> :noh<CR>
 "" <C-w>w (switching vim window)
 
 " deep-space SETTINGS
-set background=dark
-set termguicolors
 colorscheme deep-space
 
 " Airline SETTINGS
@@ -183,27 +136,28 @@ nnoremap <leader>lg :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>bb :lua require('telescope.builtin').buffers()<CR>
 nnoremap <leader>sd :lua require('me.telescope').search_dotfiles()<CR>
 nnoremap <leader>sg :lua require('telescope').extensions.lazygit.lazygit()<CR>
+nnoremap <leader>sm :lua require('telescope').extensions.media_files.media_files()<CR>
 
 " mfussenegger/nvim-dap
-nnoremap <leader>dt :lua require'dap'.toggle_breakpoint()<CR>
-"nnoremap <leader>dc :lua require'dap'.clear_breakpoints()<CR>
-nnoremap <S-h> :lua require'dap'.step_out()<CR>
-nnoremap <S-l> :lua require'dap'.step_into()<CR>
-nnoremap <S-j> :lua require'dap'.step_over()<CR>
-nnoremap <leader>ds :lua require'dap'.close()<CR>
-nnoremap <leader>dn :lua require'dap'.continue()<CR>
-nnoremap <leader>dk :lua require'dap'.up()<CR>
-nnoremap <leader>dj :lua require'dap'.down()<CR>
-nnoremap <leader>d_ :lua require'dap'.disconnect();require'dap'.close();require'dap'.run_last()<CR>
-nnoremap <leader>dr :lua require'dap'.repl.open({}, 'vsplit')<CR><C-w>l
-"nnoremap <leader>di :lua require'dap.ui.variables'.hover()<CR>
-nnoremap <leader>dh :lua require'dap.ui.widgets'.hover()<CR>
-vnoremap <leader>dh :lua require'dap.ui.variables'.visual_hover()<CR>
-"nnoremap <leader>d? :lua require'dap.ui.variables'.scopes()<CR>
-nnoremap <leader>d? :lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>
-nnoremap <leader>de :lua require'dap'.set_exception_breakpoints({"all"})<CR>
-nnoremap <leader>da :lua require'me.debugHelper'.attach()<CR>
-"nnoremap <leader>dA :lua require'debugHelper'.attachToRemote()<CR>
+nnoremap <leader>dt :lua require('dap').toggle_breakpoint()<CR>
+"nnoremap <leader>dc :lua require('dap').clear_breakpoints()<CR>
+nnoremap <S-h> :lua require('dap').step_out()<CR>
+nnoremap <S-l> :lua require('dap').step_into()<CR>
+nnoremap <S-j> :lua require('dap').step_over()<CR>
+nnoremap <leader>ds :lua require('dap').close()<CR>
+nnoremap <leader>dn :lua require('dap').continue()<CR>
+nnoremap <leader>dk :lua require('dap').up()<CR>
+nnoremap <leader>dj :lua require('dap').down()<CR>
+nnoremap <leader>d_ :lua require('dap').disconnect();require('dap').close();require('dap').run_last()<CR>
+nnoremap <leader>dr :lua require('dap').repl.open({}, 'vsplit')<CR><C-w>l
+"nnoremap <leader>di :lua require('dap.ui.variables').hover()<CR>
+nnoremap <leader>dh :lua require('dap.ui.widgets').hover()<CR>
+vnoremap <leader>dh :lua require('dap.ui.variables').visual_hover()<CR>
+"nnoremap <leader>d? :lua require('dap.ui.variables').scopes()<CR>
+nnoremap <leader>d? :lua local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>
+nnoremap <leader>de :lua require('dap').set_exception_breakpoints({"all"})<CR>
+nnoremap <leader>da :lua require('me.debugHelper').attach()<CR>
+"nnoremap <leader>dA :lua require('debugHelper').attachToRemote()<CR>
 
 " nvim-telescope/telescope-dap.nvim
 nnoremap <leader>df :Telescope dap frames<CR>
@@ -300,7 +254,7 @@ augroup GROUP1
     autocmd BufWritePre * :call TrimWhitespace()
     autocmd BufEnter * :lua require('lazygit.utils').project_root_dir()
     " Setup formatexpr specified filetype(s).
-    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    autocmd FileType python,json setl formatexpr=CocAction('formatSelected')
     " Update signature help on jump placeholder.
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END
