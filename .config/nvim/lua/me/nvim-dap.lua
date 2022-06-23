@@ -17,13 +17,13 @@ dap.configurations.python = {
   {
     type = 'python';
     request = 'launch';
-    name = "Launch file";
+    name = "python) Launch file";
     program = "${file}";
   },
   {
     type = 'python';
     request = 'launch';
-    name = "Launch file with arguments";
+    name = "python) Launch file with arguments";
     program = "${file}";
     args = function()
         local args_string = vim.fn.input('Arguments: ')
@@ -33,7 +33,7 @@ dap.configurations.python = {
   {
     type = 'python';
     request = 'attach';
-    name = "Attach remote";
+    name = "python) Attach remote";
     connect = function()
         local host = vim.fn.input('Host [127.0.0.1]: ')
         host = host ~= '' and host or '127.0.0.1'
@@ -43,15 +43,18 @@ dap.configurations.python = {
   },
 }
 
-M.test_runner = 'pytest'
-M.test_runners = {}
+-- pytest
+require('dap-python').setup('~/work/venv1/bin/python')
+require('dap-python').test_runner = 'pytest'
 
-function M.test_runners.pytest(classname, methodname)
-  local path = vim.fn.expand('%:p')
-  local test_path = table.concat(prune_nil({path, classname, methodname}), '::')
-  -- -s "allow output to stdout of test"
-  local args = {'-s', test_path}
-  return 'pytest', args
-end
-
-return M
+-- local test_runners = require('dap-python').test_runners
+--
+-- -- `test_runners` is a table. The keys are the runner names like `unittest` or `pytest`.
+-- -- The value is a function that takes three arguments:
+-- -- The classname, a methodname and the opts
+-- -- (The `opts` are coming passed through from either `test_method` or `test_class`)
+-- -- The function must return a module name and the arguments passed to the module as list.
+-- test_runners.your_runner = function(classname, methodname, opts)
+--   local args = {classname, methodname}
+--   return 'modulename', args
+-- end
