@@ -5,7 +5,7 @@ local global_options = {
     backup = false,
     encoding = 'utf-8',
     errorbells = false,
-    guicursor = '',
+    guicursor = 'a:blinkon0',
     hidden = true,
     hlsearch = true,
     ignorecase = true,
@@ -30,6 +30,7 @@ end
 -- window options
 local window_options = {
     colorcolumn = '80',
+    cursorline = true,
     number = true,
     relativenumber = true,
     signcolumn = 'yes',
