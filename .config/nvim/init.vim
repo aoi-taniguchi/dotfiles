@@ -1,6 +1,7 @@
 lua require('core.options')
 
 " PLUGIN SETTINGS
+"let g:python3_host_prog = $VIRTUAL_ENV + '/bin/python'
 let g:python3_host_prog = '~/work/venv1/bin/python'
 
 call plug#begin('~/.config/nvim/plugged')
@@ -37,7 +38,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui', {'commit': '85b266e20e45004a86b51f13293129b01e2dcf3b'}
-Plug 'mfussenegger/nvim-dap-python'
 
 " Terminal integration
 Plug 'akinsho/toggleterm.nvim', {'tag': 'v1.*'}
@@ -53,6 +53,9 @@ Plug 'junegunn/gv.vim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'tpope/vim-commentary'
 
+" GitHub integration
+Plug 'pwntester/octo.nvim'
+
 " Search and move
 Plug 'easymotion/vim-easymotion'
 
@@ -61,8 +64,10 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 
 " For fun
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'arcticicestudio/nord-vim'
 
@@ -71,12 +76,6 @@ call plug#end()
 
 " Esc SETTINGS
 inoremap <C-c> <Esc>
-
-" SPLIT BORDER SETTINGS
-"hi VertSplit cterm=none
-
-" clear highlight search
-nnoremap <C-l> :noh<CR>
 
 " splitting vim window
 "" :sp[lit] file
@@ -88,13 +87,52 @@ nnoremap <C-l> :noh<CR>
 "" <C-w>x (exchanging vim window)
 "" <C-w>w (switching vim window)
 
+" Airline SETTINGS
+"let g:airline_theme = 'base16_nord'
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
+let g:lightline = {
+	\ 'colorscheme': 'nord',
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ],
+	\             [ 'gitbranch', 'readonly', 'filename' ] ],
+	\   'right': [ [ 'lineinfo' ],
+	\	       [ 'percent' ],
+	\              [ 'fileformat', 'fileencofing', 'filetype' ] ]
+	\ },
+	\ 'component_function': {
+	\   'filename': 'MyFilename',
+	\   'gitbranch': 'MyFugitiveHead'
+	\ },
+	\ 'tabline': {
+	\   'left': [ [ 'buffers' ] ],
+	\   'right': [ [  ] ]
+	\ },
+	\ 'component_expand': {
+	\   'buffers': 'lightline#bufferline#buffers'
+	\ },
+	\ 'component_type': {
+	\   'buffers': 'tabsel'
+	\ },
+	\ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+	\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+	\ }
+
+fun! MyFilename()
+    let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+    let modified = &modified ? ' +' : ''
+    return filename . modified
+endfun
+
+fun! MyFugitiveHead()
+    if strlen(FugitiveHead())
+        return ' ' . FugitiveHead()
+    endif
+    return ''
+endfun
+
 " colorscheme SETTINGS
 colorscheme nord
-
-" Airline SETTINGS
-let g:airline_theme = 'lucius'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
 
 " ultisnips SETTINGS
 let g:UltiSnipsEditSplit='vertical'
