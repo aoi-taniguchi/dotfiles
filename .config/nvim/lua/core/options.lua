@@ -11,6 +11,7 @@ local global_options = {
     ignorecase = true,
     incsearch = true,
     laststatus = 2,
+    mouse = 'a',
     showmode = false,
     showtabline=2,
     path = vim.opt.path + '**',
