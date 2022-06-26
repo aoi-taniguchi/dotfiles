@@ -64,10 +64,8 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 
 " For fun
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'arcticicestudio/nord-vim'
 
@@ -86,50 +84,6 @@ inoremap <C-c> <Esc>
 " exchanging vim window
 "" <C-w>x (exchanging vim window)
 "" <C-w>w (switching vim window)
-
-" Airline SETTINGS
-"let g:airline_theme = 'base16_nord'
-"let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tabline#enabled = 1
-let g:lightline = {
-	\ 'colorscheme': 'nord',
-	\ 'active': {
-	\   'left': [ [ 'mode', 'paste' ],
-	\             [ 'gitbranch', 'readonly', 'filename' ] ],
-	\   'right': [ [ 'lineinfo' ],
-	\	       [ 'percent' ],
-	\              [ 'fileformat', 'fileencofing', 'filetype' ] ]
-	\ },
-	\ 'component_function': {
-	\   'filename': 'MyFilename',
-	\   'gitbranch': 'MyFugitiveHead'
-	\ },
-	\ 'tabline': {
-	\   'left': [ [ 'buffers' ] ],
-	\   'right': [ [  ] ]
-	\ },
-	\ 'component_expand': {
-	\   'buffers': 'lightline#bufferline#buffers'
-	\ },
-	\ 'component_type': {
-	\   'buffers': 'tabsel'
-	\ },
-	\ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-	\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-	\ }
-
-fun! MyFilename()
-    let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-    let modified = &modified ? ' +' : ''
-    return filename . modified
-endfun
-
-fun! MyFugitiveHead()
-    if strlen(FugitiveHead())
-        return ' ' . FugitiveHead()
-    endif
-    return ''
-endfun
 
 " colorscheme SETTINGS
 colorscheme nord
