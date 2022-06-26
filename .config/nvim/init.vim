@@ -1,8 +1,7 @@
 lua require('core.options')
 
 " PLUGIN SETTINGS
-"let g:python3_host_prog = $VIRTUAL_ENV + '/bin/python'
-let g:python3_host_prog = '~/work/venv1/bin/python'
+let g:python3_host_prog = $VIRTUAL_ENV .. '/bin/python'
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -76,16 +75,6 @@ call plug#end()
 " Esc SETTINGS
 inoremap <C-c> <Esc>
 
-" splitting vim window
-"" :sp[lit] file
-"" :vs[plit] file
-"" <C-w>s (duplicate horizontally)
-"" <C-w>v (duplicate vertically)
-
-" exchanging vim window
-"" <C-w>x (exchanging vim window)
-"" <C-w>w (switching vim window)
-
 " colorscheme SETTINGS
 colorscheme nord
 
@@ -97,78 +86,13 @@ let g:UltiSnipsJunpBackwardTrigger='<C-z>'
 
 let mapleader = " "
 
-" greeter
-nnoremap <leader>a :Alpha<CR>
-
-" which-key
-nnoremap <leader>w :WhichKey<CR>
-
-" switching buffer SETTINGS
-nnoremap <leader>bp :bprevious<CR>
-nnoremap <leader>bn :bnext<CR>
-nnoremap <leader>q  :bdelete<CR>
-
-" source init.vim
-nnoremap <leader>so :source $MYVIMRC<CR>
-
-" QUICKFIX LIST
-nnoremap <leader>co :copen<CR>
-nnoremap <leader>cn :cn<CR>
-nnoremap <leader>cp :cp<CR>
-
-" ToggleTerm
-nnoremap <silent> <leader>gg :lua lazygit_toggle()<CR>
-nnoremap <silent> <leader>hh :lua htop_toggle()<CR>
-nnoremap <silent> <leader>pp :lua python_toggle()<CR>
-
 lua require('me')
 
-" Telescope
-nnoremap <leader>fe :lua require('telescope').extensions.file_browser.file_browser()<CR>
-nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
-nnoremap <leader>lg :lua require('telescope.builtin').live_grep()<CR>
-nnoremap <leader>bb :lua require('telescope.builtin').buffers()<CR>
-nnoremap <leader>sd :lua require('me.telescope').search_dotfiles()<CR>
-nnoremap <leader>sg :lua require('telescope').extensions.lazygit.lazygit()<CR>
-nnoremap <leader>sm :lua require('telescope').extensions.media_files.media_files()<CR>
-nnoremap <leader>z  :lua require('telescope').extensions.z.list{}<CR>
-
 " mfussenegger/nvim-dap
-nnoremap <leader>dt :lua require('dap').toggle_breakpoint()<CR>
-"nnoremap <leader>dc :lua require('dap').clear_breakpoints()<CR>
 nnoremap <S-h> :lua require('dap').step_out()<CR>
 nnoremap <S-l> :lua require('dap').step_into()<CR>
 nnoremap <S-j> :lua require('dap').step_over()<CR>
-nnoremap <leader>ds :lua require('dap').close()<CR>
-nnoremap <leader>dn :lua require('dap').continue()<CR>
-nnoremap <leader>dk :lua require('dap').up()<CR>
-nnoremap <leader>dj :lua require('dap').down()<CR>
-nnoremap <leader>d_ :lua require('dap').disconnect();require('dap').close();require('dap').run_last()<CR>
-nnoremap <leader>dr :lua require('dap').repl.open({}, 'vsplit')<CR><C-w>l
-"nnoremap <leader>di :lua require('dap.ui.variables').hover()<CR>
-nnoremap <leader>dh :lua require('dap.ui.widgets').hover()<CR>
 vnoremap <leader>dh :lua require('dap.ui.variables').visual_hover()<CR>
-"nnoremap <leader>d? :lua require('dap.ui.variables').scopes()<CR>
-nnoremap <leader>d? :lua local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>
-nnoremap <leader>de :lua require('dap').set_exception_breakpoints({"all"})<CR>
-nnoremap <leader>da :lua require('me.debugHelper').attach()<CR>
-"nnoremap <leader>dA :lua require('debugHelper').attachToRemote()<CR>
-
-" nvim-telescope/telescope-dap.nvim
-nnoremap <leader>df :Telescope dap frames<CR>
-nnoremap <leader>dc :Telescope dap commands<CR>
-nnoremap <leader>db :Telescope dap list_breakpoints<CR>
-nnoremap <leader>dv :Telescope dap variables<CR>
-nnoremap <leader>dcf :Telescope dap configurations<CR>
-
-" rcarriga/nvim-dap-ui
-nnoremap <leader>du :lua require('dapui').toggle()<CR>
-
-" octo.nvim
-nnoremap <leader>ga :Octo actions<CR>
-
-" vim-maximizer SETTINGS
-nnoremap <leader>m :MaximizerToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " For vim-table-mode (nnoremap <leader>tm to toggle)
