@@ -54,8 +54,8 @@ require('telescope').setup {
             },
         },
 	media_files = {
-		filetypes = {'png', 'jpg', 'jpeg', 'pdf'},
-		find_cmd = 'rg'
+	    filetypes = {'png', 'jpg', 'jpeg', 'pdf'},
+	    find_cmd = 'rg'
 	},
     },
 }
@@ -64,6 +64,7 @@ require('telescope').load_extension('fzy_native')
 require('telescope').load_extension('file_browser')
 require('telescope').load_extension('lazygit')
 require('telescope').load_extension('media_files')
+require('telescope').load_extension('z')
 
 local M = {}
 M.search_dotfiles = function()

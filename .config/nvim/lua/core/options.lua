@@ -1,4 +1,3 @@
--- global options
 local global_options = {
     autochdir = true,
     autoread = true,
@@ -16,8 +15,11 @@ local global_options = {
     showtabline=2,
     path = vim.opt.path + '**',
     scrolloff = 8,
+    shiftwidth = 4,
     showcmd = true,
     showmatch = true,
+    softtabstop = 4,
+    tabstop = 4,
     termguicolors = true,
     updatetime = 300,
     wildignore = vim.opt.wildignore + {'**/.git/*',},
@@ -25,12 +27,6 @@ local global_options = {
     wildmode = {'longest', 'list', 'full'},
 }
 
-for k, v in pairs(global_options) do
-    vim.opt[k] = v
-end
-
-
--- window options
 local window_options = {
     colorcolumn = '80',
     cursorline = true,
@@ -40,23 +36,22 @@ local window_options = {
     wrap = false
 }
 
-for k, v in pairs(window_options) do
-    vim.wo[k] = v
-end
-
-
--- buffer options
 local buffer_options = {
     autoindent = true,
     expandtab = true,
     fileencoding = 'utf-8',
-    shiftwidth = 4,
     smartindent = true,
-    softtabstop = 4,
     swapfile = false,
     syntax = 'ON',
-    tabstop = 4
 }
+
+for k, v in pairs(global_options) do
+    vim.opt[k] = v
+end
+
+for k, v in pairs(window_options) do
+    vim.wo[k] = v
+end
 
 for k, v in pairs(buffer_options) do
     vim.bo[k] = v

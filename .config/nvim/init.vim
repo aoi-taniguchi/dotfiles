@@ -20,6 +20,7 @@ Plug 'nvim-telescope/telescope.nvim', {'commit': '85d95dfdddba7077257a5fa3eb6dd5
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope-media-files.nvim'
+Plug 'nvim-telescope/telescope-z.nvim'
 
 " Coc Plugin
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -130,6 +131,7 @@ nnoremap <leader>bb :lua require('telescope.builtin').buffers()<CR>
 nnoremap <leader>sd :lua require('me.telescope').search_dotfiles()<CR>
 nnoremap <leader>sg :lua require('telescope').extensions.lazygit.lazygit()<CR>
 nnoremap <leader>sm :lua require('telescope').extensions.media_files.media_files()<CR>
+nnoremap <leader>z  :lua require('telescope').extensions.z.list{}<CR>
 
 " mfussenegger/nvim-dap
 nnoremap <leader>dt :lua require('dap').toggle_breakpoint()<CR>
@@ -162,8 +164,8 @@ nnoremap <leader>dcf :Telescope dap configurations<CR>
 " rcarriga/nvim-dap-ui
 nnoremap <leader>du :lua require('dapui').toggle()<CR>
 
-" black
-nnoremap <leader>k :Black<CR>
+" octo.nvim
+nnoremap <leader>ga :Octo actions<CR>
 
 " vim-maximizer SETTINGS
 nnoremap <leader>m :MaximizerToggle<CR>
