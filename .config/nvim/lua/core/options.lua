@@ -4,6 +4,7 @@ local global_options = {
     backup = false,
     encoding = 'utf-8',
     errorbells = false,
+    expandtab = true,
     guicursor = 'a:blinkon0',
     hidden = true,
     hlsearch = true,
@@ -38,7 +39,6 @@ local window_options = {
 
 local buffer_options = {
     autoindent = true,
-    expandtab = true,
     fileencoding = 'utf-8',
     smartindent = true,
     swapfile = false,
