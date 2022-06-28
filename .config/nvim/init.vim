@@ -34,8 +34,9 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'onsails/lspkind.nvim'
 
-" aerial
+" outline
 Plug 'stevearc/aerial.nvim'
+"Plug 'simrat39/symbols-outline.nvim'
 
 " Snnipet Plugins
 Plug 'jiangmiao/auto-pairs'
@@ -67,9 +68,6 @@ Plug 'tpope/vim-commentary'
 
 " GitHub integration
 Plug 'pwntester/octo.nvim'
-
-" outline
-"Plug 'simrat39/symbols-outline.nvim'
 
 " Search and move
 Plug 'easymotion/vim-easymotion'
@@ -133,8 +131,4 @@ augroup GROUP1
     autocmd!
     autocmd BufWritePre * :call TrimWhitespace()
     autocmd BufEnter * :lua require('lazygit.utils').project_root_dir()
-    " Setup formatexpr specified filetype(s).
-    autocmd FileType python,json setl formatexpr=CocAction('formatSelected')
-    " Update signature help on jump placeholder.
-    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END
