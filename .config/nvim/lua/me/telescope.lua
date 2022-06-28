@@ -32,7 +32,7 @@ require('telescope').setup {
             override_file_sorter = true,
         },
         file_browser = {
-	    hidden = true,
+	        hidden = true,
             hijack_netrw = true,
             mappings = {
                 ["i"] = {
@@ -53,10 +53,14 @@ require('telescope').setup {
                 },
             },
         },
-	media_files = {
-	    filetypes = {'png', 'jpg', 'jpeg', 'pdf'},
-	    find_cmd = 'rg'
-	},
+	    media_files = {
+	        filetypes = {'png', 'jpg', 'jpeg', 'pdf'},
+	        find_cmd = 'rg'
+	    },
+        -- aerial = {
+        --     -- Display symbols as <root>.<parent>.<symbol>
+        --     show_nesting = true
+        -- },
     },
 }
 
@@ -65,6 +69,7 @@ require('telescope').load_extension('file_browser')
 require('telescope').load_extension('lazygit')
 require('telescope').load_extension('media_files')
 require('telescope').load_extension('z')
+-- require('telescope').load_extension('aerial')
 
 local M = {}
 M.search_dotfiles = function()
