@@ -1,4 +1,5 @@
 local wk = require('which-key')
+wk.setup {}
 
 local opts = {
 	mode = 'n', -- NORMAL mode
@@ -47,8 +48,6 @@ local mappings = {
       	--['?'] = { '<cmd>lua require("dap.ui.variables").scopes()<CR>', 'scopes' },
       	['?'] = { '<cmd>lua local widgets=require("dap.ui.widgets");widgets.centered_float(widgets.scopes)<CR>', 'scopes' },
       	e = { '<cmd>lua require("dap").set_exception_breakpoints({"all"})<CR>', 'set exception breakpoints' },
-      	a = { '<cmd>lua require("me.debugHelper").attach()<CR>', 'attach' },
-      	--A = { '<cmd>lua require("debugHelper").attachToRemote()<CR>', 'attach to remote' },
 
       	f = { '<cmd>Telescope dap frames<CR>', 'list frames' },
       	b = { '<cmd>Telescope dap list_breakpoints<CR>', 'list breakpoints' },
@@ -105,12 +104,39 @@ local mappings = {
         m = { '<cmd>lua require("telescope").extensions.media_files.media_files()<CR>', 'search media files' },
     },
 
+    ['ta'] = { '<cmd>AerialToggle<CR>', 'toggle arial' },
+
     -- whichkey
     ['w']  = { '<cmd>WhichKey<CR>', 'whichKey' },
 
     -- z
     ['z'] = { '<cmd>lua require("telescope").extensions.z.list()<CR>', 'z list' },
+
 }
 
-wk.setup {}
+local non_leader_opts = {
+	mode = 'n', -- NORMAL mode
+    prefix = '',
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = true, -- use `nowait` when creating keymaps
+}
+
+local non_leader_mappings = {
+
+    ['<S-h>'] = { '<cmd>lua require("dap").step_out()<CR>', '(debug) step out' },
+    ['<S-l>'] = { '<cmd>lua require("dap").step_into()<CR>', '(debug) step into' },
+    ['<S-j>'] = { '<cmd>lua require("dap").step_over()<CR>', '(debug) step over' },
+
+    ['{'] = { '<cmd>AerialPrev<CR>', 'jump backwards 1 symbol' },
+    ['}'] = { '<cmd>AerialNext<CR>', 'jump forwards 1 symbol' },
+    ['[['] = { '<cmd>AerialPrevUp<CR>', 'jump up the tree, moving backwards' },
+    [']]'] = { '<cmd>AerialNextUp<CR>', 'jump up the tree, moving forwards' },
+
+}
+
+-- vnoremap <leader>dh :lua require('dap.ui.variables').visual_hover()<CR>
+
 wk.register(mappings, opts)
+wk.register(non_leader_mappings, non_leader_opts)

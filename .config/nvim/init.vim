@@ -74,7 +74,8 @@ Plug 'easymotion/vim-easymotion'
 
 " Markdown
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+" this causes an error when using with octo.nvim
+" Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 
 " For fun
 Plug 'nvim-lualine/lualine.nvim'
@@ -84,9 +85,6 @@ Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
-
-" Esc SETTINGS
-inoremap <C-c> <Esc>
 
 " colorscheme SETTINGS
 colorscheme nord
@@ -100,12 +98,6 @@ let g:UltiSnipsJunpBackwardTrigger='<C-z>'
 let mapleader = " "
 
 lua require('me')
-
-" mfussenegger/nvim-dap
-nnoremap <S-h> :lua require('dap').step_out()<CR>
-nnoremap <S-l> :lua require('dap').step_into()<CR>
-nnoremap <S-j> :lua require('dap').step_over()<CR>
-vnoremap <leader>dh :lua require('dap.ui.variables').visual_hover()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " For vim-table-mode (nnoremap <leader>tm to toggle)
