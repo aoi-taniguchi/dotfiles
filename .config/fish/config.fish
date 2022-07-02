@@ -31,6 +31,4 @@ function fish_user_key_bindings
   bind \cr peco_select_history
 end
 
-source $HOME/work/venv1/bin/activate.fish
-
 starship init fish | source
