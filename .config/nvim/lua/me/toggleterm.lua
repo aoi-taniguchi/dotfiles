@@ -19,6 +19,11 @@ function lazygit_toggle()
 	lazygit:toggle()
 end
 
+local pr_review = Terminal:new({ cmd = "git review", hidden = true })
+function pr_review_toggle()
+    pr_review:toggle()
+end
+
 local htop = Terminal:new({ cmd = "htop", hidden = true })
 function htop_toggle()
 	htop:toggle()

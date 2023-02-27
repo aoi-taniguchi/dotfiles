@@ -45,12 +45,16 @@ Plug 'honza/vim-snippets'
 
 " Debugger Plugins
 Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
 Plug 'szw/vim-maximizer'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui', {'commit': '85b266e20e45004a86b51f13293129b01e2dcf3b'}
+
+" Tree-sitter (required for nvim-dap-python)
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Terminal integration
 Plug 'akinsho/toggleterm.nvim', {'tag': 'v1.*'}
@@ -98,6 +102,11 @@ let g:UltiSnipsJunpBackwardTrigger='<C-z>'
 let mapleader = " "
 
 lua require('me')
+
+highlight DiffAdd cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=#3B4252
+highlight DiffDelete cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=#3B4252
+highlight DiffChange cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=#3B4252
+highlight DiffText cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=#3B4252
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " For vim-table-mode (nnoremap <leader>tm to toggle)

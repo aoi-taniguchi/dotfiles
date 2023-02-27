@@ -13,7 +13,7 @@ local opts = {
 local mappings = {
 
     -- alpha
-    ['a'] = { '<cmd>Alpha<CR>', 'alpha' },
+    a = { '<cmd>Alpha<CR>', 'alpha' },
 
     -- buffer
     b = {
@@ -39,6 +39,9 @@ local mappings = {
         t = { '<cmd>lua require("dap").toggle_breakpoint()<CR>', 'toggle breakpoint' },
       	s = { '<cmd>lua require("dap").close()<CR>', 'close' },
       	n = { '<cmd>lua require("dap").continue()<CR>', 'continue' },
+        m = { '<cmd>lua require("dap-python").test_method()<CR>', 'test the closest method above the cursor' },
+        l = { '<cmd>lua require("dap-python").test_class()<CR>', 'test the closest class above the cursor' },
+        s = { '<cmd>lua require("dap-python").debug_selection()<CR>', 'debug_selection' },
       	k = { '<cmd>lua require("dap").up()<CR>', 'up' },
       	j = { '<cmd>lua require("dap").down()<CR>', 'down' },
       	_ = { '<cmd>lua require("dap").disconnect();require("dap").close();require("dap").run_last()<CR>', 'disconnect and run last' },
@@ -68,13 +71,6 @@ local mappings = {
     g = {
    	    name = 'git',
         a = { '<cmd>Octo actions<CR>', 'gh cli actions' },
-        g = { '<cmd>lua lazygit_toggle()<CR>', 'toggle lazygit' },
-    },
-
-    -- htop
-    h = {
-        name = 'toggle htop',
-        h = { '<cmd>lua htop_toggle()<CR>', 'toggle htop' },
     },
 
     -- live grep
@@ -84,16 +80,14 @@ local mappings = {
     },
 
     -- maximizer
-    ['m'] = { '<cmd>MaximizerToggle<CR>', 'maximizer' },
+    m = { '<cmd>MaximizerToggle<CR>', 'maximizer' },
 
-    -- toggleterm
     p = {
-        name = 'toggle python',
-        p = { '<cmd>lua python_toggle()<CR>', 'toggle python' },
+        name = 'pr',
+        r = { '<cmd>lua pr_review_toggle()<CR>', 'pr review diff' },
     },
-
     -- delete buffer
-    ['q'] = { '<cmd>bdelete<CR>', 'buffer delete' },
+    q = { '<cmd>bdelete<CR>', 'buffer delete' },
 
     -- general
     s = {
@@ -104,13 +98,36 @@ local mappings = {
         m = { '<cmd>lua require("telescope").extensions.media_files.media_files()<CR>', 'search media files' },
     },
 
-    ['ta'] = { '<cmd>AerialToggle<CR>', 'toggle arial' },
+    -- toggle
+    t = {
+        name = 'toggle',
+        a = { '<cmd>AerialToggle<CR>', 'aerial window' },
+        h = { '<cmd>lua htop_toggle()<CR>', 'htop' },
+        l = { '<cmd>lua lazygit_toggle()<CR>', 'lazygit' },
+        p = { '<cmd>lua python_toggle()<CR>', 'python' },
+        -- t = { '<cmd>AerialTreeToggle!<CR>', 'toggle tree recursively' },
+    },
 
     -- whichkey
-    ['w']  = { '<cmd>WhichKey<CR>', 'whichKey' },
+    w  = { '<cmd>WhichKey<CR>', 'whichkey' },
+
+    -- doesn't seem to work via ssh
+    -- y = { '"+y"', 'copy to clipboard' },
 
     -- z
-    ['z'] = { '<cmd>lua require("telescope").extensions.z.list()<CR>', 'z list' },
+    z = { '<cmd>lua require("telescope").extensions.z.list()<CR>', 'z list' },
+
+    -- swith tab
+    ['1'] = { '1gt', 'go to tab1' },
+    ['2'] = { '2gt', 'go to tab2' },
+    ['3'] = { '3gt', 'go to tab3' },
+    ['4'] = { '4gt', 'go to tab4' },
+    ['5'] = { '5gt', 'go to tab5' },
+    ['6'] = { '6gt', 'go to tab6' },
+    ['7'] = { '7gt', 'go to tab7' },
+    ['8'] = { '8gt', 'go to tab8' },
+    ['9'] = { '9gt', 'go to tab9' },
+    ['0'] = { '<cmd>tablast<CR>', 'go to last tab' },
 
 }
 
@@ -125,10 +142,16 @@ local non_leader_opts = {
 
 local non_leader_mappings = {
 
+    -- tab
+    t = { 'gt', 'next tab' },
+    T = { 'gT', 'prior tab' },
+
+    -- debug
     ['<S-h>'] = { '<cmd>lua require("dap").step_out()<CR>', '(debug) step out' },
     ['<S-l>'] = { '<cmd>lua require("dap").step_into()<CR>', '(debug) step into' },
     ['<S-j>'] = { '<cmd>lua require("dap").step_over()<CR>', '(debug) step over' },
 
+    -- outline
     ['{'] = { '<cmd>AerialPrev<CR>', 'jump backwards 1 symbol' },
     ['}'] = { '<cmd>AerialNext<CR>', 'jump forwards 1 symbol' },
     ['[['] = { '<cmd>AerialPrevUp<CR>', 'jump up the tree, moving backwards' },

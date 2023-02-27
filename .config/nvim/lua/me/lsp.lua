@@ -82,10 +82,12 @@ local lsp_flags = {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-require('lspconfig')['pyright'].setup{
+local lspconfig = require('lspconfig')
+lspconfig['pyright'].setup{
     on_attach = require('aerial').on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
+    root_dir = lspconfig.util.find_git_ancestor, -- is it working???
 }
 
 
