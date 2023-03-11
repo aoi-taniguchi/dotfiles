@@ -57,7 +57,7 @@ Plug 'rcarriga/nvim-dap-ui', {'commit': '85b266e20e45004a86b51f13293129b01e2dcf3
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Terminal integration
-Plug 'akinsho/toggleterm.nvim', {'tag': 'v1.*'}
+Plug 'akinsho/toggleterm.nvim', {'tag': '*'}
 
 " Tmux integration
 Plug 'christoomey/vim-tmux-navigator'

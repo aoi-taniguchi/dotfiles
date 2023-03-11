@@ -3,6 +3,7 @@ local dap = require('dap')
 dap.set_log_level('INFO')
 dap.defaults.fallback.terminal_win_cmd = '80vslpit new'
 vim.fn.sign_define('DapBreakpoint', {text='●', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointCondition', {text='C', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapBreakpointRejected', {text='○', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapStopped', {text='>', texthl='', linehl='', numhl=''})
 

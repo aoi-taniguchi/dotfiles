@@ -37,6 +37,7 @@ local mappings = {
         c = { '<cmd>Telescope dap commands<CR>', 'list commands' },
         --c = { '<cmd>lua require("dap").clear_breakpoints()<CR>', 'clear breakpoints' },
         t = { '<cmd>lua require("dap").toggle_breakpoint()<CR>', 'toggle breakpoint' },
+        ['tc'] = { '<cmd>lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>', 'toggle conditional breakpoint' },
       	s = { '<cmd>lua require("dap").close()<CR>', 'close' },
       	n = { '<cmd>lua require("dap").continue()<CR>', 'continue' },
         m = { '<cmd>lua require("dap-python").test_method()<CR>', 'test the closest method above the cursor' },
