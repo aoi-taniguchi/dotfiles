@@ -2,7 +2,7 @@ local wk = require('which-key')
 wk.setup {}
 
 local opts = {
-	mode = 'n', -- NORMAL mode
+    mode = 'n', -- NORMAL mode
     prefix = '<leader>',
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true, -- use `silent` when creating keymaps
@@ -75,6 +75,9 @@ local mappings = {
         b = { '<cmd>lua require("telescope.builtin").git_branches()<CR>', 'git branches' },
         c = { '<cmd>lua require("telescope.builtin").git_commits()<CR>', 'git commits' },
         s = { '<cmd>lua require("telescope.builtin").git_status()<CR>', 'git status' },
+        --d = { ':DiffviewOpen ', 'diffview open' },
+        d = { ':call DiffviewOpenWithArgs()<CR>', 'diffview open' },
+        ['dc'] = { '<cmd>DiffviewClose<CR>', 'diffview close' },
     },
 
     -- live grep

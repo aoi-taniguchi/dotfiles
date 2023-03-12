@@ -71,7 +71,8 @@ Plug 'akinsho/toggleterm.nvim', {'tag': '*'}
 Plug 'christoomey/vim-tmux-navigator'
 
 " Git integration
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
@@ -135,6 +136,13 @@ fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
+endfun
+
+fun! DiffviewOpenWithArgs()
+    call inputsave()
+    let args = input("input args: ")
+    call inputrestore()
+    execute ":DiffviewOpen ".args
 endfun
 
 augroup GROUP1
