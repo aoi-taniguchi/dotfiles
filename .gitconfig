@@ -4,3 +4,25 @@
 [pull]
 	rebase = false
 	ff = only
+[credential "https://github.tmc-stargate.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+[difftool]
+	prompt = true
+[diff]
+	tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nv -d \"$LOCAL\" \"$REMOTE\""
+[alias]
+    files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
+    stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
+    ; Open all files changed since REVIEW_BASE in nvim tabs
+    review = !~/appimages/nvim.appimage -p $(git files) +\"tabdo Gvdiffsplit $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
+    ; Same as the above, except specify names of files as arguements
+    reviewone = !~/appimages/nvim.appimage -p +\"tabdo Gvdiffsplit $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
