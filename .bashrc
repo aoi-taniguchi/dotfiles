@@ -118,17 +118,22 @@ fi
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
-export PATH="$PATH:/home/guest/.arene/bin:/home/guest/.local/bin/:/usr/bin/"
-. $HOME/.cargo/env
+export WORK_DIR=~/hmifw_share/
+# export OPENAI_API_KEY=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
 
+# cargo
+. "$HOME/.cargo/env"
+
+# exa
+export PATH="$PATH:/usr/local/bin"
+
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+command -v pyenv >/dev/null || export PATH="$PATH:$PYENV_ROOT/bin"
 eval "$(pyenv init -)"
 
-. $HOME/work/venv1/bin/activate
+# venv
+. $HOME/.venv/bin/activate
 
+# fish
 exec fish
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -20,9 +20,4 @@
 [difftool "nvimdiff"]
     cmd = "nv -d \"$LOCAL\" \"$REMOTE\""
 [alias]
-    files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
-    stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
-    ; Open all files changed since REVIEW_BASE in nvim tabs
-    review = !~/appimages/nvim.appimage -p $(git files) +\"tabdo Gvdiffsplit $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
-    ; Same as the above, except specify names of files as arguements
-    reviewone = !~/appimages/nvim.appimage -p +\"tabdo Gvdiffsplit $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
+

@@ -86,10 +86,6 @@ local mappings = {
     -- maximizer
     m = { '<cmd>MaximizerToggle<CR>', 'maximizer' },
 
-    p = {
-        name = 'pr',
-        r = { '<cmd>lua pr_review_toggle()<CR>', 'pr review diff' },
-    },
     -- delete buffer
     q = { '<cmd>bdelete<CR>', 'buffer delete' },
 
