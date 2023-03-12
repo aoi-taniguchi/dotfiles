@@ -72,6 +72,9 @@ local mappings = {
     g = {
    	    name = 'git',
         a = { '<cmd>Octo actions<CR>', 'gh cli actions' },
+        b = { '<cmd>lua require("telescope.builtin").git_branches()<CR>', 'git branches' },
+        c = { '<cmd>lua require("telescope.builtin").git_commits()<CR>', 'git commits' },
+        s = { '<cmd>lua require("telescope.builtin").git_status()<CR>', 'git status' },
     },
 
     -- live grep

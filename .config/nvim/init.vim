@@ -15,7 +15,8 @@ Plug 'folke/which-key.nvim'
 " Telescope Plugins
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', {'commit': '85d95dfdddba7077257a5fa3eb6dd57caf12579f'}
+"Plug 'nvim-telescope/telescope.nvim', {'commit': '85d95dfdddba7077257a5fa3eb6dd57caf12579f'}
+Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.1'}
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope-media-files.nvim'
@@ -33,6 +34,13 @@ Plug 'hrsh7th/cmp-cmdline'
 " needs to be set up
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'onsails/lspkind.nvim'
+
+" ChatGPT
+" Plug 'MunifTanjim/nui.nvim'
+" Plug 'jackMort/ChatGPT.nvim'
+
+" indent guide
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " outline
 Plug 'stevearc/aerial.nvim'
@@ -69,6 +77,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'tpope/vim-commentary'
+Plug 'sindrets/diffview.nvim'
 
 " GitHub integration
 Plug 'pwntester/octo.nvim'
@@ -132,4 +141,9 @@ augroup GROUP1
     autocmd!
     autocmd BufWritePre * :call TrimWhitespace()
     autocmd BufEnter * :lua require('lazygit.utils').project_root_dir()
+augroup END
+
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
 augroup END
