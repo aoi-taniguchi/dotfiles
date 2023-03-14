@@ -49,6 +49,7 @@ require('telescope').setup {
             hijack_netrw = true,
             mappings = {
                 ["i"] = {
+                    ["<CR>"]   = actions.select_default,
                     ["<C-g>"]  = fb_actions.goto_parent_dir,
                     ["<C-e>"]  = fb_actions.goto_home_dir,
                     ["<C-w>"]  = fb_actions.goto_cwd,
@@ -72,7 +73,7 @@ require('telescope').setup {
                     ["<C-c>"]  = fb_actions.create,
                     ["<C-CR>"] = fb_actions.create_from_prompt,
                     ["<C-r>"]  = fb_actions.rename,
-                    -- ["<C-m>"]  = fb_actions.move,
+                    ["<C-m>"]  = fb_actions.move,
                     ["<C-y>"]  = fb_actions.copy,
                     ["<C-d>"]  = fb_actions.remove,
                     ["<C-o>"]  = fb_actions.open,

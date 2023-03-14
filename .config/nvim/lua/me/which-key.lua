@@ -160,6 +160,11 @@ local non_leader_mappings = {
     ['[['] = { '<cmd>AerialPrevUp<CR>', 'jump up the tree, moving backwards' },
     [']]'] = { '<cmd>AerialNextUp<CR>', 'jump up the tree, moving forwards' },
 
+    -- vim default
+    -- [c : previous diff
+    -- ]c : next diff
+    -- zo : expand
+    -- zc : collapse
 }
 
 -- vnoremap <leader>dh :lua require('dap.ui.variables').visual_hover()<CR>
