@@ -119,7 +119,6 @@ fi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export WORK_DIR=~/hmifw_share/
-# export OPENAI_API_KEY=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
 
 # cargo
 . "$HOME/.cargo/env"
