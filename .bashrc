@@ -131,8 +131,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PATH:$PYENV_ROOT/bin"
 eval "$(pyenv init -)"
 
-# venv
-. $HOME/.venv/bin/activate
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # fish
 exec fish
+
