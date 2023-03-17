@@ -23,6 +23,8 @@ Plug 'nvim-telescope/telescope-media-files.nvim'
 Plug 'nvim-telescope/telescope-z.nvim'
 
 " LSP
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -82,9 +84,14 @@ Plug 'sindrets/diffview.nvim'
 
 " GitHub integration
 Plug 'pwntester/octo.nvim'
+Plug 'kevinhwang91/nvim-hlslens'
+Plug 'petertriho/nvim-scrollbar'
 
 " Search and move
 Plug 'easymotion/vim-easymotion'
+
+" org mode
+Plug 'nvim-neorg/neorg'
 
 " Markdown
 Plug 'dhruvasagar/vim-table-mode'

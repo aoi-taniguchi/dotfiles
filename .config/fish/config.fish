@@ -23,12 +23,10 @@ alias eta='exa -T -a -I "node_modules|.git|.cache" --color=always --icons | less
 alias g='git'
 alias nv='~/appimages/nvim.appimage'
 
-# peco
-set fish_plugins theme peco
-
-## bind peco history to Ctrl+r
-function fish_user_key_bindings
-  bind \cr peco_select_history
-end
-
 starship init fish | source
+
+# fzf
+fzf_configure_bindings --directory=\cf --history=\ch --processes=\cp --variables=\cv
+
+# venv
+source ~/.venv/bin/activate.fish

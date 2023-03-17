@@ -1,3 +1,19 @@
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "lua_ls",
+        "bashls",
+        "clangd",
+        "cmake",
+        "dockerls",
+        "html",
+        "marksman",
+        "pyright",
+        "yamlls",
+    },
+    automatic_installation = true,
+})
+
 local signs = {
     { name = 'DiagnosticSignError', text = '' },
     { name = 'DiagnosticSignWarn', text = '' },

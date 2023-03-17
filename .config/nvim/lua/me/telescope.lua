@@ -19,6 +19,7 @@ require('telescope').setup {
                 ["<C-k>"] = actions.move_selection_previous,
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
                 ["<Tab>"] = actions.toggle_selection,
+                ["<C-/>"] = actions.which_key,
             },
             n = {
                 ["<C-j>"] = actions.move_selection_next,

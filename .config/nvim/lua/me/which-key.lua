@@ -115,7 +115,7 @@ local mappings = {
     w  = { '<cmd>WhichKey<CR>', 'whichkey' },
 
     -- doesn't seem to work via ssh
-    -- y = { '"+y"', 'copy to clipboard' },
+    y = { '"+y', 'copy to clipboard' },
 
     -- z
     z = { '<cmd>lua require("telescope").extensions.z.list()<CR>', 'z list' },
