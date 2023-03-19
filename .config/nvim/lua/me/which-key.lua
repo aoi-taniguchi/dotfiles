@@ -2,12 +2,12 @@ local wk = require('which-key')
 wk.setup {}
 
 local opts = {
-    mode = 'n', -- NORMAL mode
+    mode = 'n',
     prefix = '<leader>',
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = false, -- use `nowait` when creating keymaps
+    silent = true,
+    noremap = true,
+    nowait = false,
 }
 
 local mappings = {
@@ -42,7 +42,7 @@ local mappings = {
       	n = { '<cmd>lua require("dap").continue()<CR>', 'continue' },
         m = { '<cmd>lua require("dap-python").test_method()<CR>', 'test the closest method above the cursor' },
         l = { '<cmd>lua require("dap-python").test_class()<CR>', 'test the closest class above the cursor' },
-        s = { '<cmd>lua require("dap-python").debug_selection()<CR>', 'debug_selection' },
+        ['sl'] = { '<cmd>lua require("dap-python").debug_selection()<CR>', 'debug_selection' },
       	k = { '<cmd>lua require("dap").up()<CR>', 'up' },
       	j = { '<cmd>lua require("dap").down()<CR>', 'down' },
       	_ = { '<cmd>lua require("dap").disconnect();require("dap").close();require("dap").run_last()<CR>', 'disconnect and run last' },
@@ -74,10 +74,9 @@ local mappings = {
         a = { '<cmd>Octo actions<CR>', 'gh cli actions' },
         b = { '<cmd>lua require("telescope.builtin").git_branches()<CR>', 'git branches' },
         c = { '<cmd>lua require("telescope.builtin").git_commits()<CR>', 'git commits' },
-        s = { '<cmd>lua require("telescope.builtin").git_status()<CR>', 'git status' },
-        --d = { ':DiffviewOpen ', 'diffview open' },
         d = { ':call DiffviewOpenWithArgs()<CR>', 'diffview open' },
         ['dc'] = { '<cmd>DiffviewClose<CR>', 'diffview close' },
+        s = { '<cmd>lua require("telescope.builtin").git_status()<CR>', 'git status' },
     },
 
     -- live grep
@@ -97,7 +96,7 @@ local mappings = {
         name = 'source/search',
         o = { '<cmd>source $MYVIMRC<CR>', 'source init.vim' },
         d = { '<cmd>lua require("me.telescope").search_dotfiles()<CR>', 'search dotfiles' },
-        g = { '<cmd>lua require("telescope").extensions.lazygit.lazygit()<CR>', 'search lazygit repos' },
+        ['lg'] = { '<cmd>lua require("telescope").extensions.lazygit.lazygit()<CR>', 'search lazygit repos' },
         m = { '<cmd>lua require("telescope").extensions.media_files.media_files()<CR>', 'search media files' },
     },
 
@@ -105,9 +104,10 @@ local mappings = {
     t = {
         name = 'toggle',
         a = { '<cmd>AerialToggle<CR>', 'aerial window' },
-        h = { '<cmd>lua htop_toggle()<CR>', 'htop' },
-        l = { '<cmd>lua lazygit_toggle()<CR>', 'lazygit' },
-        p = { '<cmd>lua python_toggle()<CR>', 'python' },
+        -- a = { '<cmd>lua require("telescope").extensions.aerial.aerial()<CR>', 'aerial window' },
+        h = { '<cmd>lua Htop_toggle()<CR>', 'htop' },
+        p = { '<cmd>lua Python_toggle()<CR>', 'python' },
+        ['lg'] = { '<cmd>lua Lazygit_toggle()<CR>', 'lazygit' },
         -- t = { '<cmd>AerialTreeToggle!<CR>', 'toggle tree recursively' },
     },
 

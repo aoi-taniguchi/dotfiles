@@ -14,8 +14,8 @@ dap.adapters.python = {
 }
 
 local venv = os.getenv('VIRTUAL_ENV')
-command = string.format('%s/bin/python', venv)
-require('dap-python').setup(command)
+VENV_PATH = string.format('%s/bin/python', venv)
+require('dap-python').setup(VENV_PATH)
 require('dap-python').test_runner = 'pytest'
 table.insert(require('dap').configurations.python, {
     type = 'python',
@@ -23,7 +23,7 @@ table.insert(require('dap').configurations.python, {
     name = 'Run pytest with arguments',
     module = 'pytest',
     args = function()
-        local args_string = vim.fn.input('Arguments: ')
+        local args_string = vim.fn.input('Arguments: ', vim.fn.expand('%'))
         return vim.split(args_string, " +")
     end,
 })
