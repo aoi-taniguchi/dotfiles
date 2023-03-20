@@ -125,9 +125,6 @@ local mappings = {
     -- doesn't seem to work via ssh
     y = { '"+y', 'copy to clipboard' },
 
-    -- z
-    z = { '<cmd>lua require("telescope").extensions.z.list()<CR>', 'z list' },
-
     -- swith tab
     ['1'] = { '1gt', 'go to tab1' },
     ['2'] = { '2gt', 'go to tab2' },

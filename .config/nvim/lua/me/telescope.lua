@@ -100,7 +100,6 @@ require('telescope').load_extension('file_browser')
 require('telescope').load_extension('lazygit')
 require('telescope').load_extension('dap')
 require('telescope').load_extension('media_files')
-require('telescope').load_extension('z')
 -- require('telescope').load_extension('aerial')
 
 local M = {}
