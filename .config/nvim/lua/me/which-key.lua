@@ -26,6 +26,7 @@ local mappings = {
     -- quickfix
     c = {
         name = 'quickfix',
+        l = { '<cmd>lua require("telescope.builtin").quickfix()<CR>', 'quickfix list' },
         o = { '<cmd>copen<CR>', 'open quickfix list' },
         n = { '<cmd>cn<CR>', 'go to next quickfix' },
         p = { '<cmd>cp<CR>', 'go to previous quickfix' }
@@ -63,9 +64,10 @@ local mappings = {
 
     -- telescope
     f = {
-        name = 'file/find',
+        name = 'file / find / format',
         e = { '<cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>', 'file explorer' },
         f = { '<cmd>lua require("telescope.builtin").find_files()<CR>', 'find files' },
+        o = { '<cmd>lua require("telescope.builtin").oldfiles()<CR>', 'find old files' },
     },
 
     -- git
@@ -79,10 +81,16 @@ local mappings = {
         s = { '<cmd>lua require("telescope.builtin").git_status()<CR>', 'git status' },
     },
 
-    -- live grep
+    j = {
+        name = 'jumplist',
+        l = { '<cmd>lua require("telescope.builtin").jumplist()<CR>', 'jumplist' },
+    },
+
+    -- live grep / location list
     l = {
-        name = 'live grep',
+        name = 'live grep / location list',
         g = { '<cmd>lua require("telescope.builtin").live_grep()<CR>', 'live grep' },
+        l = { '<cmd>lua require("telescope.builtin").loclist()<CR>', 'location list' },
     },
 
     -- maximizer
@@ -135,12 +143,12 @@ local mappings = {
 }
 
 local non_leader_opts = {
-	mode = 'n', -- NORMAL mode
+	mode = 'n',
     prefix = '',
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = true, -- use `nowait` when creating keymaps
+    silent = true,
+    noremap = true,
+    nowait = true,
 }
 
 local non_leader_mappings = {
@@ -165,9 +173,57 @@ local non_leader_mappings = {
     -- ]c : next diff
     -- zo : expand
     -- zc : collapse
+
+    -- don't make registers dirty
+    x = { '"_x', 'discard x' },
+    s = { '"_s', 'discard s' },
+
+    -- add blank lines
+    -- ['<S-CR>'] = { 'm`o<Esc>``', 'add a blank line below' },
+    -- ['<C-S-CR>'] = { 'm`O<Esc>``', 'add a blank line above' },
+
+    -- move one line
+    ['<S-Up>'] = { '"zdd<Up>"zP', 'move a line up' },
+    ['<S-Down>'] = { '"zdd"zp', 'move a line down' },
 }
 
+
+local insert_opts = {
+	mode = 'i',
+    prefix = '',
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true,
+    noremap = true,
+    nowait = true,
+}
+
+local insert_mappings = {
+
+    -- add blank lines
+    -- ['<S-CR>'] = { '<End><CR>', 'add a blank line below' },
+    -- ['<C-S-CR>'] = { '<Home><CR><Up>', 'add a blank line above' },
+
+}
+
+local visual_opts = {
+	mode = 'v',
+    prefix = '',
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true,
+    noremap = true,
+    nowait = true,
+}
+
+local visual_mappings = {
+
+    -- move lines
+    ['<S-Up>'] = { '"zx<Up>"zP`[V`]', 'move a line up' },
+    ['<S-Down>'] = { '"zx"zp`[V`]', 'move a line down' },
+
+}
 -- vnoremap <leader>dh :lua require('dap.ui.variables').visual_hover()<CR>
 
 wk.register(mappings, opts)
 wk.register(non_leader_mappings, non_leader_opts)
+wk.register(insert_mappings, insert_opts)
+wk.register(visual_mappings, visual_opts)
