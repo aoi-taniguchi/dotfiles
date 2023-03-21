@@ -27,7 +27,7 @@ alias nv='~/appimages/nvim.appimage'
 starship init fish | source
 
 # fzf
-fzf_configure_bindings --directory=\cf --history=\ch --processes=\cp --variables=\cv
+fzf_configure_bindings --directory=\cf --history=\cr --processes=\cp --variables=\cv
 set fzf_fd_opts --hidden --exclude=.git
 
 # venv
