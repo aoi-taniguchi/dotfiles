@@ -19,11 +19,6 @@ function Lazygit_toggle()
 	lazygit:toggle()
 end
 
-local htop = Terminal:new({ cmd = "htop", direction = "float", hidden = true })
-function Htop_toggle()
-	htop:toggle()
-end
-
 local python = Terminal:new({ cmd = "python", direction = "float", hidden = true })
 function Python_toggle()
 	python:toggle()

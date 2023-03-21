@@ -84,6 +84,19 @@ local mappings = {
         s = { '<cmd>lua require("telescope.builtin").git_status()<CR>', 'git status' },
     },
 
+    -- Harpoon
+    h = {
+        name = 'Harpoon',
+        a = { '<cmd>lua require("harpoon.mark").add_file()<CR>', 'add file' },
+        m = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>', 'menu' },
+        n = { '<cmd>lua require("harpoon.ui").nav_next()<CR>', 'navigation to next' },
+        p = { '<cmd>lua require("harpoon.ui").nav_previous()<CR>', 'navigation to previous' },
+        ['1'] = { '<cmd>lua require("harpoon.ui").nav_file(1)<CR>', 'go to index 1' },
+        ['2'] = { '<cmd>lua require("harpoon.ui").nav_file(2)<CR>', 'go to index 2' },
+        ['3'] = { '<cmd>lua require("harpoon.ui").nav_file(3)<CR>', 'go to index 3' },
+        ['4'] = { '<cmd>lua require("harpoon.ui").nav_file(4)<CR>', 'go to index 4' },
+    },
+
     j = {
         name = 'jumplist',
         l = { '<cmd>lua require("telescope.builtin").jumplist()<CR>', 'jumplist' },
@@ -118,10 +131,21 @@ local mappings = {
         -- a = { '<cmd>lua require("telescope").extensions.aerial.aerial()<CR>', 'aerial window' },
         c = { '<cmd>Codi!!<CR>', 'codi' },
         -- ['gb']: (gitsigns) git blame
-        h = { '<cmd>lua Htop_toggle()<CR>', 'htop' },
         p = { '<cmd>lua Python_toggle()<CR>', 'python' },
         ['lg'] = { '<cmd>lua Lazygit_toggle()<CR>', 'lazygit' },
         -- t = { '<cmd>AerialTreeToggle!<CR>', 'toggle tree recursively' },
+
+        -- swith tab
+        ['1'] = { '1gt', 'go to tab1' },
+        ['2'] = { '2gt', 'go to tab2' },
+        ['3'] = { '3gt', 'go to tab3' },
+        ['4'] = { '4gt', 'go to tab4' },
+        ['5'] = { '5gt', 'go to tab5' },
+        ['6'] = { '6gt', 'go to tab6' },
+        ['7'] = { '7gt', 'go to tab7' },
+        ['8'] = { '8gt', 'go to tab8' },
+        ['9'] = { '9gt', 'go to tab9' },
+        ['0'] = { '<cmd>tablast<CR>', 'go to last tab' },
     },
 
     -- whichkey
@@ -129,18 +153,6 @@ local mappings = {
 
     -- doesn't seem to work via ssh
     y = { '"+y', 'copy to clipboard' },
-
-    -- swith tab
-    ['1'] = { '1gt', 'go to tab1' },
-    ['2'] = { '2gt', 'go to tab2' },
-    ['3'] = { '3gt', 'go to tab3' },
-    ['4'] = { '4gt', 'go to tab4' },
-    ['5'] = { '5gt', 'go to tab5' },
-    ['6'] = { '6gt', 'go to tab6' },
-    ['7'] = { '7gt', 'go to tab7' },
-    ['8'] = { '8gt', 'go to tab8' },
-    ['9'] = { '9gt', 'go to tab9' },
-    ['0'] = { '<cmd>tablast<CR>', 'go to last tab' },
 
 }
 
