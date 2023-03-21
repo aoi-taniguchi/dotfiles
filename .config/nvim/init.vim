@@ -63,6 +63,9 @@ Plug 'RRethy/vim-illuminate'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
 
+" Task Runner
+Plug 'stevearc/overseer.nvim'
+
 " Debugger Plugins
 Plug 'mfussenegger/nvim-dap'
 Plug 'mfussenegger/nvim-dap-python'

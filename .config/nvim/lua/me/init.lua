@@ -1,5 +1,6 @@
 require('me.auto-session')
 require('me.telescope')
+require('me.overseer')
 require('me.nvim-dap-python')
 require('me.nvim-dap-virtual-text')
 require('me.nvim-dap-ui')
