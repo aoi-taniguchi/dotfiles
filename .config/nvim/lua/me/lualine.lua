@@ -7,8 +7,8 @@ local diagnostics = {
     sources = { 'nvim_diagnostic' },
     sections = { 'error', 'warn' },
     symbols = { error = ' ', warn = ' ' },
-    colored = false,
-    update_in_insert = false,
+    colored = true,
+    update_in_insert = true,
     always_visible = true,
 }
 
@@ -19,17 +19,36 @@ local branch = {
 }
 
 local mode = {
-    "mode",
+    'mode',
     fmt = function(str)
         return "-- " .. str .. " --"
     end,
 }
 
+local filename = {
+    'filename',
+    path = 3,   -- 0: Just the filename
+                -- 1: Relative path
+                -- 2: Absolute path
+                -- 3: Absolute path, with tilde as the home directory
+    file_status = false,
+    shorting_target = 40,
+}
+
 local diff = {
     'diff',
-    colored = false,
+    colored = true,
     symbols = { added = ' ', modified = ' ', removed = ' ' },
-    cond = hide_in_width
+    source = function()
+        local gitsigns = vim.b.gitsigns_status_dict
+        if gitsigns then
+            return {
+                added = gitsigns.added,
+                modified = gitsigns.changed,
+                removed = gitsigns.removed
+            }
+        end
+    end
 }
 
 local spaces = function()
@@ -49,27 +68,34 @@ require('lualine').setup {
     options = {
         icons_enabled = false,
         theme = 'nord',
-        component_separators = { left = '', right = '' },
+        component_separators = { left = '|', right = '|' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = { 'alpha' },
         always_divide_middle = true,
+        globalstatus = true,
     },
     tabline = {},
     sections = {
-        lualine_a = { branch, diagnostics },
-        lualine_b = { mode },
-        lualine_c = {},
-        lualine_x = { diff, spaces, 'encoding', 'filetype' },
-        lualine_y = { 'location' },
-        lualine_z = { progress }
+        lualine_a = { mode },
+        lualine_b = { branch, diff },
+        lualine_c = { filename },
+        lualine_x = {},
+        lualine_y = { diagnostics },
+        lualine_z = { 'filetype', 'encoding', 'location' }
     },
     inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { 'filename' },
-        lualine_x = { 'location' },
-        lualine_y = {},
-        lualine_z = {},
+        -- lualine_a = {},
+        -- lualine_b = {},
+        -- lualine_c = { 'filename' },
+        -- lualine_x = { 'location' },
+        -- lualine_y = {},
+        -- lualine_z = {},
+        lualine_a = { mode },
+        lualine_b = { branch, diff },
+        lualine_c = { filename },
+        lualine_x = {},
+        lualine_y = { diagnostics },
+        lualine_z = { 'filetype', 'encoding', 'location' }
     },
     extensions = {},
 }
