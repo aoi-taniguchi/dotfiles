@@ -21,7 +21,7 @@ local branch = {
 local mode = {
     "mode",
     fmt = function(str)
-	return "-- " .. str .. " --"
+        return "-- " .. str .. " --"
     end,
 }
 
@@ -48,28 +48,28 @@ end
 require('lualine').setup {
     options = {
         icons_enabled = false,
-	theme = 'nord',
-	component_separators = { left = '', right = '' },
-	section_separators = { left = '', right = '' },
-	disabled_filetypes = {'alpha'},
-	always_divide_middle = true,
+        theme = 'nord',
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        disabled_filetypes = { 'alpha' },
+        always_divide_middle = true,
     },
     tabline = {},
     sections = {
-    	lualine_a = {branch, diagnostics},
-    	lualine_b = {mode},
-    	lualine_c = {},
-    	lualine_x = {diff, spaces, 'encoding', 'filetype'},
-    	lualine_y = {'location'},
-    	lualine_z = {progress}
+        lualine_a = { branch, diagnostics },
+        lualine_b = { mode },
+        lualine_c = {},
+        lualine_x = { diff, spaces, 'encoding', 'filetype' },
+        lualine_y = { 'location' },
+        lualine_z = { progress }
     },
     inactive_sections = {
-	lualine_a = {},
-	lualine_b = {},
-	lualine_c = {'filename'},
-	lualine_x = {'location'},
-	lualine_y = {},
-	lualine_z = {},
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
+        lualine_y = {},
+        lualine_z = {},
     },
     extensions = {},
 }

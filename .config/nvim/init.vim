@@ -57,6 +57,8 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'stevearc/aerial.nvim'
 "Plug 'simrat39/symbols-outline.nvim'
 
+Plug 'RRethy/vim-illuminate'
+
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
@@ -112,21 +114,23 @@ call plug#end()
 
 " colorscheme SETTINGS
 colorscheme nord
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
 
 " ultisnips SETTINGS
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsJumpForwardTrigger='<C-b>'
-let g:UltiSnipsJunpBackwardTrigger='<C-z>'
+let g:UltiSnipsJumpBackwardTrigger='<C-z>'
 
 
 let mapleader = " "
 
 lua require('me')
 
-highlight DiffAdd cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=#3B4252
-highlight DiffDelete cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=#3B4252
-highlight DiffChange cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=#3B4252
-highlight DiffText cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=#3B4252
+" vim-illuminate
+hi def IlluminatedWordText gui=reverse
+hi def IlluminatedWordRead gui=reverse
+hi def IlluminatedWordWrite gui=reverse
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " For vim-table-mode (nnoremap <leader>tm to toggle)
@@ -153,6 +157,13 @@ fun! DiffviewOpenWithArgs()
     let args = input("input args: ")
     call inputrestore()
     execute ":DiffviewOpen ".args
+endfun
+
+fun! DiffviewFileHistoryWithArgs()
+    call inputsave()
+    let args = input("input args: ")
+    call inputrestore()
+    execute ":DiffviewFileHistory ".args
 endfun
 
 augroup GROUP1

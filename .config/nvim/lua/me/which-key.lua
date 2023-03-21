@@ -75,9 +75,11 @@ local mappings = {
    	    name = 'git',
         a = { '<cmd>Octo actions<CR>', 'gh cli actions' },
         b = { '<cmd>lua require("telescope.builtin").git_branches()<CR>', 'git branches' },
+        -- bl: (gitsigns) git blame
         c = { '<cmd>lua require("telescope.builtin").git_commits()<CR>', 'git commits' },
         d = { ':call DiffviewOpenWithArgs()<CR>', 'diffview open' },
         ['dc'] = { '<cmd>DiffviewClose<CR>', 'diffview close' },
+        ['dh'] = { ':call DiffviewFileHistoryWithArgs()<CR>', 'diffview file history' },
         s = { '<cmd>lua require("telescope.builtin").git_status()<CR>', 'git status' },
     },
 
@@ -169,7 +171,11 @@ local non_leader_mappings = {
     -- [c : previous diff
     -- ]c : next diff
     -- zo : expand
+    -- zm : expand all
+    -- zM : expand all recursively
     -- zc : collapse
+    -- zr : collapse all
+    -- zR : collapse all recursively
 
     -- don't make registers dirty
     x = { '"_x', 'discard x' },
