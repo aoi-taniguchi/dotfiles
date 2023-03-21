@@ -78,7 +78,6 @@ Plug 'akinsho/toggleterm.nvim', {'tag': '*'}
 Plug 'christoomey/vim-tmux-navigator'
 
 " Git integration
-"Plug 'airblade/vim-gitgutter'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'

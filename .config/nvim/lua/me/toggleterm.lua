@@ -1,8 +1,8 @@
 require('toggleterm').setup {
-    size = 10,
+    size = 20,
     open_mapping = [[<c-]>]],
     shading_factor = 2,
-    direction = "float",
+    direction = "horizontal", -- horizontal, vertical, float, tab
     float_opts = {
         border = "curved",
         highlights = {
@@ -14,17 +14,17 @@ require('toggleterm').setup {
 
 local Terminal = require('toggleterm.terminal').Terminal
 
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+local lazygit = Terminal:new({ cmd = "lazygit", direction = "float", hidden = true })
 function Lazygit_toggle()
 	lazygit:toggle()
 end
 
-local htop = Terminal:new({ cmd = "htop", hidden = true })
+local htop = Terminal:new({ cmd = "htop", direction = "float", hidden = true })
 function Htop_toggle()
 	htop:toggle()
 end
 
-local python = Terminal:new({ cmd = "python", hidden = true })
+local python = Terminal:new({ cmd = "python", direction = "float", hidden = true })
 function Python_toggle()
 	python:toggle()
 end

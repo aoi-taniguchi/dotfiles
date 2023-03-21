@@ -1,6 +1,7 @@
 local wk = require('which-key')
 wk.setup {}
 
+-- NORMAL MODE with the leader --
 local opts = {
     mode = 'n',
     prefix = '<leader>',
@@ -67,6 +68,7 @@ local mappings = {
         name = 'file / find / format',
         e = { '<cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>', 'file explorer' },
         f = { '<cmd>lua require("telescope.builtin").find_files()<CR>', 'find files' },
+        g = { '<cmd>lua require("telescope.builtin").git_files()<CR>', 'find git files' },
         o = { '<cmd>lua require("telescope.builtin").oldfiles()<CR>', 'find old files' },
     },
 
@@ -142,6 +144,8 @@ local mappings = {
 
 }
 
+
+-- NORMAL MODE without the leader--
 local non_leader_opts = {
 	mode = 'n',
     prefix = '',
@@ -189,9 +193,11 @@ local non_leader_mappings = {
     -- move one line
     ['<S-Up>'] = { '"zdd<Up>"zP', 'move a line up' },
     ['<S-Down>'] = { '"zdd"zp', 'move a line down' },
+
 }
 
 
+-- INSERT MODE --
 local insert_opts = {
 	mode = 'i',
     prefix = '',
@@ -209,6 +215,8 @@ local insert_mappings = {
 
 }
 
+
+-- VISUAL MODE --
 local visual_opts = {
 	mode = 'v',
     prefix = '',
@@ -224,10 +232,31 @@ local visual_mappings = {
     ['<S-Up>'] = { '"zx<Up>"zP`[V`]', 'move a line up' },
     ['<S-Down>'] = { '"zx"zp`[V`]', 'move a line down' },
 
+    -- vnoremap <leader>dh :lua require('dap.ui.variables').visual_hover()<CR>
+
 }
--- vnoremap <leader>dh :lua require('dap.ui.variables').visual_hover()<CR>
+
+
+-- TERMINAL MODE --
+local terminal_opts = {
+	mode = 't',
+    prefix = '',
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true,
+    noremap = true,
+    nowait = true,
+}
+
+local terminal_mappings = {
+
+    -- leave the terminal mode
+    ['<Esc>'] = { '<C-\\><C-n>' ,'leave the TERMINAL mode' },
+
+}
+
 
 wk.register(mappings, opts)
 wk.register(non_leader_mappings, non_leader_opts)
 wk.register(insert_mappings, insert_opts)
 wk.register(visual_mappings, visual_opts)
+wk.register(terminal_mappings, terminal_opts)
