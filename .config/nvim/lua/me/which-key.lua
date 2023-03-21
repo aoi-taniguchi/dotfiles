@@ -75,7 +75,6 @@ local mappings = {
    	    name = 'git',
         a = { '<cmd>Octo actions<CR>', 'gh cli actions' },
         b = { '<cmd>lua require("telescope.builtin").git_branches()<CR>', 'git branches' },
-        -- bl: (gitsigns) git blame
         c = { '<cmd>lua require("telescope.builtin").git_commits()<CR>', 'git commits' },
         d = { ':call DiffviewOpenWithArgs()<CR>', 'diffview open' },
         ['dc'] = { '<cmd>DiffviewClose<CR>', 'diffview close' },
@@ -115,6 +114,8 @@ local mappings = {
         name = 'toggle',
         a = { '<cmd>AerialToggle<CR>', 'aerial window' },
         -- a = { '<cmd>lua require("telescope").extensions.aerial.aerial()<CR>', 'aerial window' },
+        c = { '<cmd>Codi!!<CR>', 'codi' },
+        -- ['gb']: (gitsigns) git blame
         h = { '<cmd>lua Htop_toggle()<CR>', 'htop' },
         p = { '<cmd>lua Python_toggle()<CR>', 'python' },
         ['lg'] = { '<cmd>lua Lazygit_toggle()<CR>', 'lazygit' },

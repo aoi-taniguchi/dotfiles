@@ -62,7 +62,7 @@ require('gitsigns').setup {
             return '<Ignore>'
         end, { expr = true })
 
-        map('n', '<leader>gbl', gs.toggle_current_line_blame)
+        map('n', '<leader>tgb', gs.toggle_current_line_blame)
     end
 }
 
