@@ -123,6 +123,17 @@ let g:nord_italic_comments = 1
 " let g:nord_uniform_diff_background = 1
 colorscheme nord
 
+" vimdiff color
+hi DiffAdd      gui=none    guifg=NONE    guibg=#00693E
+hi DiffChange   gui=none    guifg=NONE    guibg=NONE
+hi DiffDelete   gui=none    guifg=NONE    guibg=#262B36
+hi DiffText     gui=none    guifg=NONE    guibg=#00693E
+
+" vim-illuminate
+hi def IlluminatedWordText gui=reverse
+hi def IlluminatedWordRead gui=reverse
+hi def IlluminatedWordWrite gui=reverse
+
 " ultisnips SETTINGS
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsJumpForwardTrigger='<C-b>'
@@ -132,11 +143,6 @@ let g:UltiSnipsJumpBackwardTrigger='<C-z>'
 let mapleader = " "
 
 lua require('me')
-
-" vim-illuminate
-hi def IlluminatedWordText gui=reverse
-hi def IlluminatedWordRead gui=reverse
-hi def IlluminatedWordWrite gui=reverse
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " For vim-table-mode (nnoremap <leader>tm to toggle)

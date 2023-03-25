@@ -5,6 +5,7 @@ local global_options = {
     encoding = 'utf-8',
     errorbells = false,
     expandtab = true,
+    fillchars = vim.opt.fillchars + { diff = ' ' },
     guicursor = 'a:blinkon0',
     hidden = true,
     hlsearch = true,
@@ -13,7 +14,7 @@ local global_options = {
     laststatus = 3,
     mouse = 'a',
     showmode = false,
-    showtabline=2,
+    showtabline = 2,
     path = vim.opt.path + '**',
     scrolloff = 8,
     shiftwidth = 4,
@@ -23,9 +24,9 @@ local global_options = {
     tabstop = 4,
     termguicolors = true,
     updatetime = 300,
-    wildignore = vim.opt.wildignore + {'**/.git/*',},
+    wildignore = vim.opt.wildignore + { '**/.git/*', },
     wildmenu = true,
-    wildmode = {'longest', 'list', 'full'},
+    wildmode = { 'longest', 'list', 'full' },
 }
 
 local window_options = {
@@ -64,12 +65,12 @@ if vim.env.TMUX then
     vim.g.clipboard = {
         name = 'tmux',
         copy = {
-            ["+"] = {'tmux', 'load-buffer', '-w', '-'},
-            ["*"] = {'tmux', 'load-buffer', '-w', '-'},
+            ["+"] = { 'tmux', 'load-buffer', '-w', '-' },
+            ["*"] = { 'tmux', 'load-buffer', '-w', '-' },
         },
         paste = {
-            ["+"] = {'tmux', 'save-buffer', '-'},
-            ["*"] = {'tmux', 'save-buffer', '-'},
+            ["+"] = { 'tmux', 'save-buffer', '-' },
+            ["*"] = { 'tmux', 'save-buffer', '-' },
         },
         cache_enabled = false,
     }
