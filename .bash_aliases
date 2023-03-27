@@ -12,3 +12,4 @@ alias eta='exa -T -a -I "node_modules|.git|.cache" --color=always --icons | less
 alias g='git'
 alias lg='lazygit'
 alias nv='~/appimages/nvim.appimage'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
