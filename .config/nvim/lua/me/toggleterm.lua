@@ -19,11 +19,13 @@ function Toggle_lazygit()
 	lazygit:toggle()
 end
 
--- not sure why, but doesn't work
-local dotfiles_lazygit = Terminal:new({ cmd = "dlg", direction = "float", hidden = true })
+local dlg = "export GIT_DIR=$HOME/.dotfiles/ \z
+                && export GIT_WORK_TREE=$HOME \z
+                && lazygit \z
+                && unset GIT_DIR \z
+                && unset GIT_WORK_TREE"
+local dotfiles_lazygit = Terminal:new({ cmd = dlg, direction = "float", hidden = true })
 function Toggle_dotfiles_lazygit()
-    -- vim.env.GIT_DIR = "$HOME/.dotfiles/"
-    -- vim.env.GIT_WORK_TREE = "$HOME"
 	dotfiles_lazygit:toggle()
 end
 
