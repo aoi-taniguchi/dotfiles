@@ -1,2 +1,4 @@
 -- TODO
-require('overseer').setup()
+require('overseer').setup({
+    strategy = 'toggleterm',
+})
