@@ -120,7 +120,6 @@ call plug#end()
 " colorscheme SETTINGS
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
-" let g:nord_uniform_diff_background = 1
 colorscheme nord
 
 " vimdiff color
