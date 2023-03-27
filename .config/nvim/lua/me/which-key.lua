@@ -132,8 +132,9 @@ local mappings = {
         -- a = { '<cmd>lua require("telescope").extensions.aerial.aerial()<CR>', 'aerial window' },
         c = { '<cmd>Codi!!<CR>', 'codi' },
         -- ['gb']: (gitsigns) git blame
-        p = { '<cmd>lua Python_toggle()<CR>', 'python' },
-        ['lg'] = { '<cmd>lua Lazygit_toggle()<CR>', 'lazygit' },
+        p = { '<cmd>lua Toggle_python()<CR>', 'python' },
+        ['lg'] = { '<cmd>lua Toggle_lazygit()<CR>', 'lazygit' },
+        ['dlg'] = { '<cmd>lua Toggle_dotfiles_lazygit()<CR>', 'dotfiles lazygit' },
         -- t = { '<cmd>AerialTreeToggle!<CR>', 'toggle tree recursively' },
 
         -- swith tab
