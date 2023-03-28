@@ -1,6 +1,6 @@
 # dotfiles
 - shell: fish
-  - major plugin included
+  - major plugins included
     - fzf.fish [https://github.com/PatrickF1/fzf.fish]
     - z [https://github.com/jethrokuan/z]
 - tmux (theme: nord)
