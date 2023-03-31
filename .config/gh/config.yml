@@ -10,6 +10,9 @@ pager:
 aliases:
     co: pr checkout
     bname: pr view --json headRefName --jq .headRefName
+    spr1: search prs --state open --owner arene-os-services-cockpit-tmc --involves aoi-taniguchi
+    spr2: search prs --state open --owner arene-os-services-cockpit-tmc-wa --involves aoi-taniguchi
+    spr3: search prs --state open --owner arene-os-services-cockpit-wa --involves aoi-taniguchi
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.
