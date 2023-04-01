@@ -59,8 +59,6 @@ for k, v in pairs(buffer_options) do
 end
 
 -- clipboard
--- vim.opt.clipboard:append{'unnamedplus'}
-
 if vim.env.TMUX then
     vim.g.clipboard = {
         name = 'tmux',

@@ -154,7 +154,7 @@ local mappings = {
     -- whichkey
     w  = { '<cmd>WhichKey<CR>', 'whichkey' },
 
-    -- doesn't seem to work via ssh
+    -- clipboard
     y = { '"+y', 'copy to clipboard' },
 
 }
