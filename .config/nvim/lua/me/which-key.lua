@@ -82,7 +82,7 @@ local mappings = {
         ['dc'] = { '<cmd>DiffviewClose<CR>', 'diffview close' },
         ['dh'] = { ':call DiffviewFileHistoryWithArgs()<CR>', 'diffview file history' },
         s = { '<cmd>lua require("telescope.builtin").git_status()<CR>', 'git status' },
-        ['spr'] = { '<cmd>Octo search type:pr state:open org:arene-os-services-cockpit-tmc org:arene-os-services-cockpit-tmc-wa org:arene-os-services-cockpit-wa involves:aoi-taniguchi<CR>', 'gh search prs' },
+        ['spr'] = { '<cmd>Octo search type:pr state:open involves:aoi-taniguchi sort:updated<CR>', 'gh search prs' },
     },
 
     -- Harpoon
