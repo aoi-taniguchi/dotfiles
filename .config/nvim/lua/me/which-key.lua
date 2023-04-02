@@ -83,7 +83,7 @@ local mappings = {
         ['dh'] = { ':call DiffviewFileHistoryWithArgs()<CR>', 'diffview file history' },
         r = { '<cmd>lua require("telescope").extensions.repo.list()<CR>', 'search git repos' },
         s = { '<cmd>lua require("telescope.builtin").git_status()<CR>', 'git status' },
-        ['spr'] = { '<cmd>Octo search type:pr state:open involves:aoi-taniguchi sort:updated<CR>', 'gh search prs' },
+        ['pr'] = { '<cmd>Octo search type:pr state:open involves:aoi-taniguchi sort:updated<CR>', 'gh search prs' },
         u = { '<cmd>Telescope undo<CR>', 'git undo tree' },
     },
 
