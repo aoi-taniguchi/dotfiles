@@ -1,6 +1,7 @@
 lua require('core.options')
 
 " PLUGIN SETTINGS
+" TODO: migrate to lazy.nvim
 let g:python3_host_prog = $VIRTUAL_ENV .. '/bin/python'
 
 call plug#begin('~/.config/nvim/plugged')
