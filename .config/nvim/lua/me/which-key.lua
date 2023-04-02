@@ -83,6 +83,7 @@ local mappings = {
         ['dh'] = { ':call DiffviewFileHistoryWithArgs()<CR>', 'diffview file history' },
         s = { '<cmd>lua require("telescope.builtin").git_status()<CR>', 'git status' },
         ['spr'] = { '<cmd>Octo search type:pr state:open involves:aoi-taniguchi sort:updated<CR>', 'gh search prs' },
+        u = { '<cmd>Telescope undo<CR>', 'git undo tree' },
     },
 
     -- Harpoon
@@ -114,6 +115,12 @@ local mappings = {
     -- maximizer
     m = { '<cmd>MaximizerToggle<CR>', 'maximizer' },
 
+    -- preview
+    p = {
+        name = 'preview',
+        m = { '<cmd>Glow<CR>', 'preview markdown with glow' },
+    },
+
     -- delete buffer
     q = { '<cmd>bdelete<CR>', 'buffer delete' },
 
@@ -122,6 +129,7 @@ local mappings = {
         name = 'source/search',
         o = { '<cmd>source $MYVIMRC<CR>', 'source init.vim' },
         d = { '<cmd>lua require("me.telescope").search_dotfiles()<CR>', 'search dotfiles' },
+        ['gr'] = { '<cmd>lua require("telescope").extensions.repo.list()<CR>', 'search git repos' },
         ['lg'] = { '<cmd>lua require("telescope").extensions.lazygit.lazygit()<CR>', 'search lazygit repos' },
         m = { '<cmd>lua require("telescope").extensions.media_files.media_files()<CR>', 'search media files' },
     },

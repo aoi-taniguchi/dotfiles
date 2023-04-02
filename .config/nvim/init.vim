@@ -22,6 +22,8 @@ Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.1'}
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope-media-files.nvim'
+Plug 'kdheepak/lazygit.nvim'
+Plug 'cljoly/telescope-repo.nvim'
 
 " Harpoon
 Plug 'ThePrimeagen/harpoon'
@@ -88,8 +90,8 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
-Plug 'kdheepak/lazygit.nvim'
 Plug 'tpope/vim-commentary'
+Plug 'debugloop/telescope-undo.nvim'
 Plug 'sindrets/diffview.nvim'
 
 " GitHub integration
@@ -107,6 +109,8 @@ Plug 'nvim-neorg/neorg'
 Plug 'dhruvasagar/vim-table-mode'
 " this causes an error when using with octo.nvim
 " Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+" Markdown preview with glow
+Plug 'ellisonleao/glow.nvim'
 
 " For fun
 Plug 'nvim-lualine/lualine.nvim'
