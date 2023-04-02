@@ -12,6 +12,9 @@ require('telescope').setup {
         qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
 
         layout_strategy = 'flex',
+        layout_config = {
+            scroll_speed = 3,
+        },
 
         mappings = {
             i = {
