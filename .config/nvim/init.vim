@@ -33,6 +33,7 @@ Plug 'metakirby5/codi.vim'
 
 " Trouble
 Plug 'folke/trouble.nvim'
+Plug 'folke/todo-comments.nvim'
 
 " LSP
 Plug 'williamboman/mason.nvim'

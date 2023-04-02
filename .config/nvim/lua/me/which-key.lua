@@ -165,7 +165,12 @@ local mappings = {
     -- trouble
     x = {
         name = 'trouble',
+        t = { '<cmd>lua require("me.todo-comments").select_todo_app()<CR>', 'todo' },
         x = { '<cmd>TroubleToggle<CR>', 'trouble' },
+        w = { '<cmd>TroubleToggle workspace_diagnostics<CR>', 'trouble workspace diagnostics' },
+        d = { '<cmd>TroubleToggle document_diagnostics<CR>', 'trouble workspace diagnostics' },
+        q = { '<cmd>TroubleToggle quickfix<CR>', 'trouble quickfix' },
+        l = { '<cmd>TroubleToggle loclist<CR>', 'trouble loclist' },
     },
 
     -- clipboard
