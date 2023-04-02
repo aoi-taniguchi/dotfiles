@@ -33,6 +33,8 @@
       - auto-session [https://github.com/rmagatti/auto-session]
     - Fuzzy finder
       - telescope [https://github.com/nvim-telescope/telescope.nvim]
+    - Pretty list
+      - trouble [https://github.com/folke/trouble.nvim]
     - LSP
       - mason [https://github.com/williamboman/mason.nvim]
       - lspconfig [https://github.com/neovim/nvim-lspconfig]
