@@ -1,4 +1,20 @@
 # dotfiles
+## prerequisites
+- git
+- gh cli
+- fzf
+- lazygit
+- delta
+- glow
+- bat
+- exa
+- ripgrep
+- fd
+- chafa
+- python
+- ...
+
+## plugins
 - shell: fish
   - major plugins included
     - fzf.fish [https://github.com/PatrickF1/fzf.fish]
