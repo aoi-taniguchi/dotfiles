@@ -31,6 +31,9 @@ Plug 'ThePrimeagen/harpoon'
 " Scratchpad
 Plug 'metakirby5/codi.vim'
 
+" Trouble
+Plug 'folke/trouble.nvim'
+
 " LSP
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'

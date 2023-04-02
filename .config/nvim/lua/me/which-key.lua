@@ -81,6 +81,7 @@ local mappings = {
         d = { ':call DiffviewOpenWithArgs()<CR>', 'diffview open' },
         ['dc'] = { '<cmd>DiffviewClose<CR>', 'diffview close' },
         ['dh'] = { ':call DiffviewFileHistoryWithArgs()<CR>', 'diffview file history' },
+        r = { '<cmd>lua require("telescope").extensions.repo.list()<CR>', 'search git repos' },
         s = { '<cmd>lua require("telescope.builtin").git_status()<CR>', 'git status' },
         ['spr'] = { '<cmd>Octo search type:pr state:open involves:aoi-taniguchi sort:updated<CR>', 'gh search prs' },
         u = { '<cmd>Telescope undo<CR>', 'git undo tree' },
@@ -129,7 +130,6 @@ local mappings = {
         name = 'source/search',
         o = { '<cmd>source $MYVIMRC<CR>', 'source init.vim' },
         d = { '<cmd>lua require("me.telescope").search_dotfiles()<CR>', 'search dotfiles' },
-        ['gr'] = { '<cmd>lua require("telescope").extensions.repo.list()<CR>', 'search git repos' },
         ['lg'] = { '<cmd>lua require("telescope").extensions.lazygit.lazygit()<CR>', 'search lazygit repos' },
         m = { '<cmd>lua require("telescope").extensions.media_files.media_files()<CR>', 'search media files' },
     },
@@ -161,6 +161,12 @@ local mappings = {
 
     -- whichkey
     w  = { '<cmd>WhichKey<CR>', 'whichkey' },
+
+    -- trouble
+    x = {
+        name = 'trouble',
+        x = { '<cmd>TroubleToggle<CR>', 'trouble' },
+    },
 
     -- clipboard
     y = { '"+y', 'copy to clipboard' },
@@ -216,6 +222,9 @@ local non_leader_mappings = {
     -- move one line
     ['<S-Up>'] = { '"zdd<Up>"zP', 'move a line up' },
     ['<S-Down>'] = { '"zdd"zp', 'move a line down' },
+
+    -- trouble lsp
+    ['gr'] = { '<cmd>TroubleToggle lsp_references<CR>', 'go to references' },
 
 }
 
