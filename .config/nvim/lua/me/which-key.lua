@@ -74,7 +74,7 @@ local mappings = {
 
     -- git
     g = {
-   	    name = 'git',
+        name = 'git',
         a = { '<cmd>Octo actions<CR>', 'gh cli actions' },
         b = { '<cmd>lua require("telescope.builtin").git_branches()<CR>', 'git branches' },
         c = { '<cmd>lua require("telescope.builtin").git_commits()<CR>', 'git commits' },
@@ -181,7 +181,7 @@ local mappings = {
 
 -- NORMAL MODE without the leader--
 local non_leader_opts = {
-	mode = 'n',
+    mode = 'n',
     prefix = '',
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true,
@@ -236,7 +236,7 @@ local non_leader_mappings = {
 
 -- INSERT MODE --
 local insert_opts = {
-	mode = 'i',
+    mode = 'i',
     prefix = '',
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true,
@@ -255,7 +255,7 @@ local insert_mappings = {
 
 -- VISUAL MODE --
 local visual_opts = {
-	mode = 'v',
+    mode = 'v',
     prefix = '',
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true,
@@ -276,7 +276,7 @@ local visual_mappings = {
 
 -- TERMINAL MODE --
 local terminal_opts = {
-	mode = 't',
+    mode = 't',
     prefix = '',
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true,
