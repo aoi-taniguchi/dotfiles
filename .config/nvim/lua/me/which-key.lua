@@ -195,6 +195,10 @@ local non_leader_mappings = {
     t = { 'gt', 'next tab' },
     T = { 'gT', 'prior tab' },
 
+    -- next buffer
+    ['<Tab>'] = { '<cmd>bnext<CR>', 'go to next buffer' },
+    ['<S-Tab>'] = { '<cmd>bprevious<CR>', 'go to previous buffer' },
+
     -- debug
     ['<S-h>'] = { '<cmd>lua require("dap").step_out()<CR>', '(debug) step out' },
     ['<S-l>'] = { '<cmd>lua require("dap").step_into()<CR>', '(debug) step into' },
