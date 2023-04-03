@@ -16,6 +16,11 @@ Plug 'folke/which-key.nvim'
 " Nvim session
 Plug 'rmagatti/auto-session'
 
+" Noice
+Plug 'MunifTanjim/nui.nvim'
+Plug 'rcarriga/nvim-notify'
+Plug 'folke/noice.nvim'
+
 " Telescope Plugins
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'

@@ -1,4 +1,5 @@
 require('me.auto-session')
+require('me.noice')
 require('me.telescope')
 require('me.harpoon')
 require('me.overseer')
