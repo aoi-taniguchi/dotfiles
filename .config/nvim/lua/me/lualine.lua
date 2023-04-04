@@ -64,6 +64,31 @@ local progress = function()
     return chars[index]
 end
 
+local status = function()
+    local options = {
+        {
+            require("noice").api.status.message.get_hl,
+            cond = require("noice").api.status.message.has,
+        },
+        {
+            require("noice").api.status.command.get,
+            cond = require("noice").api.status.command.has,
+            color = { fg = "#ff9e64" },
+        },
+        {
+            require("noice").api.status.mode.get,
+            cond = require("noice").api.status.mode.has,
+            color = { fg = "#ff9e64" },
+        },
+        {
+            require("noice").api.status.search.get,
+            cond = require("noice").api.status.search.has,
+            color = { fg = "#ff9e64" },
+        },
+    }
+    return options
+end
+
 require('lualine').setup {
     options = {
         icons_enabled = false,
@@ -79,7 +104,7 @@ require('lualine').setup {
         lualine_a = { mode },
         lualine_b = { branch, diff },
         lualine_c = { filename },
-        lualine_x = {},
+        lualine_x = { status },
         lualine_y = { diagnostics },
         lualine_z = { 'filetype', 'encoding', 'location' }
     },
@@ -93,7 +118,7 @@ require('lualine').setup {
         lualine_a = { mode },
         lualine_b = { branch, diff },
         lualine_c = { filename },
-        lualine_x = {},
+        lualine_x = { status },
         lualine_y = { diagnostics },
         lualine_z = { 'filetype', 'encoding', 'location' }
     },

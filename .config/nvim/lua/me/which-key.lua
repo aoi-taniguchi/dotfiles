@@ -116,6 +116,9 @@ local mappings = {
     -- maximizer
     m = { '<cmd>MaximizerToggle<CR>', 'maximizer' },
 
+    -- noice
+    n = { '<cmd>Noice telescope<CR>', 'noice telescope' },
+
     -- preview
     p = {
         name = 'preview',
