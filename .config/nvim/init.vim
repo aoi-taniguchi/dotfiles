@@ -62,7 +62,6 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'honza/vim-snippets'
 
 " ChatGPT
-" Plug 'MunifTanjim/nui.nvim'
 " Plug 'jackMort/ChatGPT.nvim'
 
 " indent guide
@@ -110,7 +109,7 @@ Plug 'pwntester/octo.nvim'
 " Search and move
 Plug 'easymotion/vim-easymotion'
 Plug 'kevinhwang91/nvim-hlslens'
-Plug 'petertriho/nvim-scrollbar'
+" Plug 'petertriho/nvim-scrollbar'
 
 " org mode
 Plug 'nvim-neorg/neorg'
