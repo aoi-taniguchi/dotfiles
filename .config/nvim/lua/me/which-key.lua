@@ -84,6 +84,7 @@ local mappings = {
         r = { '<cmd>lua require("telescope").extensions.repo.list()<CR>', 'search git repos' },
         s = { '<cmd>lua require("telescope.builtin").git_status()<CR>', 'git status' },
         ['pr'] = { '<cmd>Octo search type:pr state:open involves:aoi-taniguchi sort:updated<CR>', 'gh search prs' },
+        ['dpr'] = { '<cmd>Octo search draft:true state:open sort:updated<CR>', 'gh search draft prs' },
         u = { '<cmd>Telescope undo<CR>', 'git undo tree' },
     },
 

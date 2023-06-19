@@ -106,7 +106,7 @@ require('lualine').setup {
         lualine_c = { filename },
         lualine_x = { status },
         lualine_y = { diagnostics },
-        lualine_z = { 'filetype', 'encoding', 'location' }
+        lualine_z = { 'filetype', 'encoding', 'location', progress }
     },
     inactive_sections = {
         -- lualine_a = {},
@@ -120,7 +120,7 @@ require('lualine').setup {
         lualine_c = { filename },
         lualine_x = { status },
         lualine_y = { diagnostics },
-        lualine_z = { 'filetype', 'encoding', 'location' }
+        lualine_z = { 'filetype', 'encoding', 'location', progress }
     },
     extensions = {},
 }
