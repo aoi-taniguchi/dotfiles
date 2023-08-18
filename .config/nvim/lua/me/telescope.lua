@@ -6,6 +6,7 @@ require('telescope').setup {
         file_sorter = require('telescope.sorters').get_fzy_sorter,
         prompt_prefix = ' >',
         color_devicons = true,
+        wrap_results = true,
 
         file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
         grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
@@ -87,10 +88,10 @@ require('telescope').setup {
                 },
             },
         },
-	    media_files = {
-	        filetypes = {'png', 'jpg', 'jpeg', 'pdf'},
-	        find_cmd = 'rg'
-	    },
+	      media_files = {
+	          filetypes = {'png', 'jpg', 'jpeg', 'pdf'},
+	          find_cmd = 'rg'
+	      },
         -- aerial = {
         --     -- Display symbols as <root>.<parent>.<symbol>
         --     show_nesting = true
