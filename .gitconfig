@@ -39,3 +39,5 @@
 [difftool "nvimdiff"]
     cmd = "nv -d \"$LOCAL\" \"$REMOTE\""
 
+[mergetool "nvimdiff"]
+    layout = LOCAL,MERGED,REMOTE

@@ -6,39 +6,71 @@ vim.fn.sign_define('DapBreakpoint', {text='●', texthl='', linehl='', numhl=''}
 vim.fn.sign_define('DapBreakpointRejected', {text='○', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapStopped', {text='>', texthl='', linehl='', numhl=''})
 
-dap.adapters.python = {
-  type = 'executable';
-  command = 'python';
-  args = {'-m', 'debugpy.adapter'};
+dap.adapters.cppdbg = {
+  id = 'cppdbg',
+  type = 'executable',
+  command = os.getenv("HOME") .. '/work/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7',
 }
 
-dap.configurations.python = {
+dap.configurations.cpp = {
   {
-    type = 'python';
-    request = 'launch';
-    name = "Launch file";
-    program = "${file}";
+    name = "launch - local",
+    type = "cppdbg",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopAtEntry = true,
+    runInTerminal = true,
   },
   {
-    type = 'python';
-    request = 'launch';
-    name = "Launch file with arguments";
-    program = "${file}";
-    args = function()
-        local args_string = vim.fn.input('Arguments: ')
-        return vim.split(args_string, " +")
-    end;
-  },
-  {
-    type = 'python';
-    request = 'attach';
-    name = "Attach remote";
-    connect = function()
-        local host = vim.fn.input('Host [127.0.0.1]: ')
-        host = host ~= '' and host or '127.0.0.1'
-        local port = tonumber(vim.fn.input('Port [5678]: ')) or 5678
-        return { host = host, port = port }
-    end;
+    name = "attach - docker container (sdk-hal-docker_arene_1)",
+    type = "cppdbg",
+    request = "attach",
+    cwd = "/opt/arene/bin",
+    program = function()
+      return "/opt/arene/" .. vim.fn.input('Path to executable: /opt/arene/')
+    end,
+    -- processId = "${command:pickProcess}",
+    processId = 183,
+    sourceFileMap = {
+      -- ["/workdir/cockpit_resource_manager/src"] = {
+      --   editorPath = '${workspaceFolder}',
+      --   useForBreakpoints = true,
+      -- },
+      ["/workdir/cockpit_resource_manager/src"] = '${workspaceFolder}',
+    },
+    -- miDebuggerServerAddress = "192.168.10.254:1234",
+    -- useExtendedRemote = true,
+    miDebuggerArgs = "-x ~/.config/gdb/gdbinit",
+    pipeTransport = {
+      pipeCwd = "/usr/bin",
+      pipeProgram = "/usr/bin/docker",
+      pipeArgs = {
+        "exec",
+        "-i",
+        "sdk-hal-docker_arene_1",
+        "sh",
+        "-c"
+      },
+      -- pipeProgram = "/usr/bin/ssh",
+      -- pipeArgs = {
+      --   "root@192.168.10.254",
+      -- },
+      debuggerPath = "/usr/bin/gdb",
+    },
+    MIMode = "gdb",
+    setupCommands = {
+      {
+        text = '-enable-pretty-printing',
+        description = 'enable pretty printing',
+        ignoreFailures = false
+      },
+    },
+    runInTerminal = true,
   },
 }
+
+dap.configurations.c = dap.configurations.cpp
 

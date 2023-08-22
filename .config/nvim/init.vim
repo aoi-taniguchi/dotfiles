@@ -86,7 +86,8 @@ Plug 'mfussenegger/nvim-dap-python'
 Plug 'szw/vim-maximizer'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'theHamsta/nvim-dap-virtual-text'
-Plug 'rcarriga/nvim-dap-ui', {'commit': '85b266e20e45004a86b51f13293129b01e2dcf3b'}
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'folke/neodev.nvim'
 
 " Terminal integration
 Plug 'akinsho/toggleterm.nvim', {'tag': '*'}
