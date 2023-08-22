@@ -110,6 +110,7 @@ Plug 'pwntester/octo.nvim'
 " Search and move
 Plug 'easymotion/vim-easymotion'
 Plug 'kevinhwang91/nvim-hlslens'
+" this causes unexpected behavior when used with vim-maximizer
 " Plug 'petertriho/nvim-scrollbar'
 
 " org mode
@@ -117,7 +118,7 @@ Plug 'nvim-neorg/neorg'
 
 " Markdown
 Plug 'dhruvasagar/vim-table-mode'
-" this causes an error when using with octo.nvim
+" this causes an error when used with octo.nvim
 " Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 " Markdown preview with glow
 Plug 'ellisonleao/glow.nvim'
