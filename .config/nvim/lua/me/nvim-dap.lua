@@ -32,19 +32,13 @@ dap.configurations.cpp = {
     program = function()
       return "/opt/arene/" .. vim.fn.input('Path to executable: /opt/arene/')
     end,
-    -- processId = "${command:pickProcess}",
-    processId = 183,
+    processId = "${command:pickRemoteProcess}",
+    -- processId = 194,
     sourceFileMap = {
-      -- ["/workdir/cockpit_resource_manager/src"] = {
-      --   editorPath = '${workspaceFolder}',
-      --   useForBreakpoints = true,
-      -- },
       ["/workdir/cockpit_resource_manager/src"] = '${workspaceFolder}',
     },
-    -- miDebuggerServerAddress = "192.168.10.254:1234",
-    -- useExtendedRemote = true,
-    miDebuggerArgs = "-x ~/.config/gdb/gdbinit",
     pipeTransport = {
+      debuggerPath = "/usr/bin/gdb",
       pipeCwd = "/usr/bin",
       pipeProgram = "/usr/bin/docker",
       pipeArgs = {
@@ -54,11 +48,6 @@ dap.configurations.cpp = {
         "sh",
         "-c"
       },
-      -- pipeProgram = "/usr/bin/ssh",
-      -- pipeArgs = {
-      --   "root@192.168.10.254",
-      -- },
-      debuggerPath = "/usr/bin/gdb",
     },
     MIMode = "gdb",
     setupCommands = {

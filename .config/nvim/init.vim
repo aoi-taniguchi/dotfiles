@@ -81,7 +81,8 @@ Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'stevearc/overseer.nvim'
 
 " Debugger Plugins
-Plug 'mfussenegger/nvim-dap'
+" Plug 'mfussenegger/nvim-dap'
+Plug 'aoi-taniguchi/nvim-dap'
 Plug 'mfussenegger/nvim-dap-python'
 Plug 'szw/vim-maximizer'
 Plug 'nvim-telescope/telescope-dap.nvim'
