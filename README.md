@@ -1,4 +1,7 @@
 # dotfiles
+
+![example](https://github.com/aoi-taniguchi/dotfiles/blob/master/img/image.png?raw=true)
+
 ## prerequisites
 - git
 - gh cli
