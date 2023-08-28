@@ -33,7 +33,6 @@ dap.configurations.cpp = {
       return "/opt/arene/" .. vim.fn.input('Path to executable: /opt/arene/')
     end,
     processId = "${command:pickRemoteProcess}",
-    -- processId = 194,
     sourceFileMap = {
       ["/workdir/cockpit_resource_manager/src"] = '${workspaceFolder}',
     },
