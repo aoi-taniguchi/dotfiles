@@ -180,6 +180,8 @@ local mappings = {
     -- clipboard
     y = { '"+y', 'copy to clipboard' },
 
+    z = { '<cmd>ZenMode<CR>', 'Zen Mode' },
+
 }
 
 

@@ -116,6 +116,7 @@ Plug 'kevinhwang91/nvim-hlslens'
 
 " org mode
 Plug 'nvim-neorg/neorg'
+Plug 'folke/zen-mode.nvim'
 
 " Markdown
 Plug 'dhruvasagar/vim-table-mode'
