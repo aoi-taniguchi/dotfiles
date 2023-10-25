@@ -34,5 +34,8 @@ starship init fish | source
 fzf_configure_bindings --directory=\cf --history=\cr --processes=\cp --variables=\cv
 set fzf_fd_opts --hidden --exclude=.git
 
+# direnv
+eval (direnv hook fish)
+
 # venv
 source ~/.venv/bin/activate.fish
