@@ -35,7 +35,7 @@ fzf_configure_bindings --directory=\cf --history=\cr --processes=\cp --variables
 set fzf_fd_opts --hidden --exclude=.git
 
 # direnv
-eval (direnv hook fish)
+direnv hook fish | source
 
 # venv
 source ~/.venv/bin/activate.fish
