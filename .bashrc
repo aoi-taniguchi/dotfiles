@@ -134,6 +134,9 @@ eval "$(pyenv init -)"
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# PRELOAD error workaround
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
+
 # fish
 exec fish
 
