@@ -4,25 +4,37 @@
 HISTFILE=~/.zsh_history
 
 # source
-plug "$HOME/.config/zsh/aliases.zsh"
-plug "$HOME/.config/zsh/exports.zsh"
+source "$HOME/.config/zsh/aliases.zsh"
+source "$HOME/.config/zsh/exports.zsh"
 
 # plugins
-# plug "esc/conda-zsh-completion"
-plug "zsh-users/zsh-autosuggestions"
+source ~/.zplug/init.zsh
+# zplug "esc/conda-zsh-completion"
+zplug "zsh-users/zsh-autosuggestions"
 # plug "hlissner/zsh-autopair"
-plug "zap-zsh/supercharge"
-plug "zap-zsh/vim"
-# plug "spaceship-prompt/spaceship-prompt"
+# plug "zap-zsh/supercharge"
+# plug "zap-zsh/vim"
+zplug "spaceship-prompt/spaceship-prompt"
 # plug "zap-zsh/atmachine-prompt"
-plug "zap-zsh/zap-prompt"
-plug "zap-zsh/fzf"
-plug "zap-zsh/exa"
-plug "zsh-users/zsh-syntax-highlighting"
+# zplug "zap-zsh/zap-prompt"
+zplug "zap-zsh/fzf"
+# zplug "zap-zsh/exa"
+zplug "zsh-users/zsh-syntax-highlighting"
 #
 # eval "$(starship init zsh)"
 
 # plug "spaceship-prompt/spaceship-prompt"
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load
 
 # keybinds
 # bindkey '^ ' autosuggest-accept
@@ -37,6 +49,9 @@ fi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export WORK_DIR=~/hmifw_share/
+
+# zoxide
+eval "$(zoxide init zsh)"
 
 # fd
 export PATH="$HOME/.local/bin:$PATH"
