@@ -48,7 +48,6 @@ fi
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
-export WORK_DIR=~/hmifw_share/
 
 # zoxide
 eval "$(zoxide init zsh)"
@@ -64,3 +63,8 @@ eval "$(pyenv init -)"
 # venv
 source ~/.venv/bin/activate
 
+# nix
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
+
+# direnv
+eval "$(direnv hook zsh)"
