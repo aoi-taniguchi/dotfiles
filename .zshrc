@@ -33,3 +33,19 @@ if command -v bat &> /dev/null; then
   alias cat="bat -pp --theme \"Visual Studio Dark+\""
   alias catt="bat --theme \"Visual Studio Dark+\""
 fi
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
+export WORK_DIR=~/hmifw_share/
+
+# fd
+export PATH="$HOME/.local/bin:$PATH"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# venv
+source ~/.venv/bin/activate
+
