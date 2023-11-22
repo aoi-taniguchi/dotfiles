@@ -14,14 +14,14 @@ zplug "zsh-users/zsh-autosuggestions"
 # plug "hlissner/zsh-autopair"
 # plug "zap-zsh/supercharge"
 # plug "zap-zsh/vim"
-zplug "spaceship-prompt/spaceship-prompt"
+# zplug "spaceship-prompt/spaceship-prompt"
 # plug "zap-zsh/atmachine-prompt"
 # zplug "zap-zsh/zap-prompt"
 zplug "zap-zsh/fzf"
 # zplug "zap-zsh/exa"
 zplug "zsh-users/zsh-syntax-highlighting"
 #
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 
 # plug "spaceship-prompt/spaceship-prompt"
 
