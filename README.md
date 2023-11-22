@@ -6,6 +6,7 @@
 - git
 - gh cli
 - fzf
+- zoxide
 - lazygit
 - delta
 - glow
@@ -22,6 +23,7 @@
   - major plugins included
     - fzf.fish [https://github.com/PatrickF1/fzf.fish]
     - z [https://github.com/jethrokuan/z]
+- shell: zsh
 - tmux (theme: nord)
 - nvim (theme: nord)
   - major plugins included
