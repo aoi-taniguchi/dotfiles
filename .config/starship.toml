@@ -1,3 +1,6 @@
+[username]
+disabled = true
+
 [hostname]
 disabled = true
 
@@ -122,6 +125,7 @@ symbol = " "
 symbol = "🪺 "
 
 [python]
+format = '[(\($virtualenv\) )]($style)'
 symbol = " "
 
 [rlang]
