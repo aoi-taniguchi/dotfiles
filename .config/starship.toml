@@ -1,11 +1,12 @@
-[username]
-disabled = true
-
-[hostname]
-disabled = true
-
-[cmd_duration]
-disabled = true
+format = """
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
 
 [aws]
 symbol = "  "

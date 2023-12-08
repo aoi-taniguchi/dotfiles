@@ -65,11 +65,14 @@ local mappings = {
 
     -- telescope
     f = {
-        name = 'file / find / format',
+        name = 'file / find / format / flutter',
+        a = { '<cmd>lua require("me.vim-flutter").flutter_attach()<CR>', 'flutter attach with debug port' },
+        -- c = { '<cmd>Telescope flutter commands<CR>', 'flutter tools commands' },
         e = { '<cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>', 'file explorer' },
         f = { '<cmd>lua require("telescope.builtin").find_files()<CR>', 'find files' },
         g = { '<cmd>lua require("telescope.builtin").git_files()<CR>', 'find git files' },
         o = { '<cmd>lua require("telescope.builtin").oldfiles()<CR>', 'find old files' },
+        q = { '<cmd>lua require("me.vim-flutter").flutter_quit()<CR>', 'flutter quit' },
     },
 
     -- git
@@ -172,7 +175,7 @@ local mappings = {
         t = { '<cmd>lua require("me.todo-comments").select_todo_app()<CR>', 'todo' },
         x = { '<cmd>TroubleToggle<CR>', 'trouble' },
         w = { '<cmd>TroubleToggle workspace_diagnostics<CR>', 'trouble workspace diagnostics' },
-        d = { '<cmd>TroubleToggle document_diagnostics<CR>', 'trouble workspace diagnostics' },
+        d = { '<cmd>TroubleToggle document_diagnostics<CR>', 'trouble document diagnostics' },
         q = { '<cmd>TroubleToggle quickfix<CR>', 'trouble quickfix' },
         l = { '<cmd>TroubleToggle loclist<CR>', 'trouble loclist' },
     },

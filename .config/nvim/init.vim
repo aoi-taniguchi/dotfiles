@@ -24,7 +24,7 @@ Plug 'folke/noice.nvim'
 " Telescope Plugins
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.1'}
+Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.4'}
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope-media-files.nvim'
@@ -124,6 +124,19 @@ Plug 'dhruvasagar/vim-table-mode'
 " Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 " Markdown preview with glow
 Plug 'ellisonleao/glow.nvim'
+
+" Project root
+Plug 'notjedi/nvim-rooter.lua'
+
+" Flutter
+Plug 'stevearc/dressing.nvim'
+" Plug 'akinsho/flutter-tools.nvim'
+Plug 'thosakwe/vim-flutter'
+let g:flutter_show_log_on_run = 0
+let g:flutter_show_log_on_attach = 0
+let g:flutter_split_height = 5
+let g:flutter_autoscroll = 1
+let g:flutter_close_on_quit = 1
 
 " For fun
 Plug 'nvim-lualine/lualine.nvim'

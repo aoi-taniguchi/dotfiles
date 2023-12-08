@@ -9,21 +9,8 @@ source "$HOME/.config/zsh/exports.zsh"
 
 # plugins
 source ~/.zplug/init.zsh
-# zplug "esc/conda-zsh-completion"
 zplug "zsh-users/zsh-autosuggestions"
-# plug "hlissner/zsh-autopair"
-# plug "zap-zsh/supercharge"
-# plug "zap-zsh/vim"
-# zplug "spaceship-prompt/spaceship-prompt"
-# plug "zap-zsh/atmachine-prompt"
-# zplug "zap-zsh/zap-prompt"
-zplug "zap-zsh/fzf"
-# zplug "zap-zsh/exa"
 zplug "zsh-users/zsh-syntax-highlighting"
-#
-eval "$(starship init zsh)"
-
-# plug "spaceship-prompt/spaceship-prompt"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -49,8 +36,15 @@ fi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# starship
+eval "$(starship init zsh)"
+
 # zoxide
 eval "$(zoxide init zsh)"
+
+# fzf
+if [ -e $HOME/.config/fzf/completion.zsh ]; then . $HOME/.config/fzf/completion.zsh; fi
+if [ -e $HOME/.config/fzf/key-bindings.zsh ]; then . $HOME/.config/fzf/key-bindings.zsh; fi
 
 # fd
 export PATH="$HOME/.local/bin:$PATH"
@@ -68,3 +62,7 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc
 
 # direnv
 eval "$(direnv hook zsh)"
+
+# flutter
+export PATH="$HOME/work/flutter/bin:$PATH"
+

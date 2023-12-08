@@ -16,6 +16,16 @@ dap.adapters = {
     type = "executable",
     command = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/bash-debug-adapter",
     name = "bashdb",
+  },
+  dart = {
+    type = "executable",
+    command = "dart",
+    args = {"debug_adapter"}
+  },
+  flutter = {
+    type = "executable",
+    command = "flutter",
+    args = {"debug_adapter"}
   }
 }
 
@@ -86,6 +96,50 @@ dap.configurations = {
     env = {},
     terminalKind = "integrated",
   },
+  dart = {
+    {
+      type = "dart",
+      request = "launch",
+      name = "Launch dart",
+      dartSdkPath = "dart",
+      flutterSdkPath = "flutter",
+      program = "${file}",
+      cwd = "${workspaceFolder}"
+    },
+    {
+      type = "flutter",
+      request = "launch",
+      name = "Launch flutter",
+      dartSdkPath = "dart",
+      flutterSdkPath = "flutter",
+      program = "${file}",
+      cwd = "${workspaceFolder}"
+    },
+    {
+      type = "flutter",
+      request = "attach",
+      name = "Attach to flutter process",
+      dartSdkPath = "dart",
+      flutterSdkPath = "flutter",
+      program = "${workspaceFolder}/lib/main.dart",
+      cwd = "${workspaceFolder}",
+      -- args = function()
+      --     local args_string = vim.fn.input('Arguments: ', '-d linux --debug-port 31569')
+      --     return vim.split(args_string, " ")
+      -- end,
+      args = {"-d", "linux", "--debug-port", "31569"},
+    },
+    {
+      type = "dart",
+      request = "attach",
+      name = "Attach to dart process",
+      dartSdkPath = "dart",
+      flutterSdkPath = "flutter",
+      program = "${workspaceFolder}/lib/main.dart",
+      cwd = "${workspaceFolder}",
+      vmServiceUri = "http://127.0.0.1:31569/",
+    },
+  }
 }
 
 dap.configurations.c = dap.configurations.cpp

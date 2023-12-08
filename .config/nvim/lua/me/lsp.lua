@@ -96,6 +96,7 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local default_servers = { 'bashls', 'clangd', 'cmake', 'dockerls', 'html', 'jsonls', 'marksman', 'pyright' }
+-- local default_servers = { 'bashls', 'clangd', 'dockerls', 'html', 'jsonls', 'marksman', 'pyright' }
 
 for _, lsp in ipairs(default_servers) do
     lspconfig[lsp].setup {

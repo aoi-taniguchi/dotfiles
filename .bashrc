@@ -116,27 +116,28 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export WORK_DIR=~/hmifw_share/
 
-# cargo
-. "$HOME/.cargo/env"
-
-# exa
-export PATH="$PATH:/usr/local/bin"
+# fd
+export PATH="$HOME/.local/bin:$PATH"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PATH:$PYENV_ROOT/bin"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# venv
+source ~/.venv/bin/activate
 
-# PRELOAD error workaround
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
-
-# fish
-exec fish
-
+# direnv
+eval "$(/home/aoi-taniguchi/.nix-profile/bin/direnv hook bash)"
