@@ -1,17 +1,17 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = {
-        "lua_ls",
-        "bashls",
-        "clangd",
-        "cmake",
-        "dockerls",
-        "html",
-        "jsonls",
-        "marksman",
-        "pyright",
-        "yamlls",
-    },
+    -- ensure_installed = {
+    --     "lua_ls",
+    --     "bashls",
+    --     "clangd",
+    --     "cmake",
+    --     "dockerls",
+    --     "html",
+    --     "jsonls",
+    --     "marksman",
+    --     "pyright",
+    --     "yamlls",
+    -- },
     automatic_installation = true,
 })
 
@@ -95,49 +95,48 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local default_servers = { 'bashls', 'clangd', 'cmake', 'dockerls', 'html', 'jsonls', 'marksman', 'pyright' }
--- local default_servers = { 'bashls', 'clangd', 'dockerls', 'html', 'jsonls', 'marksman', 'pyright' }
+-- local default_servers = { 'bashls', 'clangd', 'cmake', 'dockerls', 'html', 'jsonls', 'marksman', 'pyright' }
 
-for _, lsp in ipairs(default_servers) do
-    lspconfig[lsp].setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-    }
-end
+-- for _, lsp in ipairs(default_servers) do
+--     lspconfig[lsp].setup {
+--         on_attach = on_attach,
+--         capabilities = capabilities,
+--     }
+-- end
 
-lspconfig['lua_ls'].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            runtime = {
-                version = 'LuaJIT',
-            },
-            diagnostics = {
-                globals = { 'vim' },
-            },
-            workspace = {
-                library = vim.api.nvim_get_runtime_file("", true),
-                checkThirdParty = false,
-            },
-            telemetry = {
-                enable = false,
-            },
-        },
-    },
-}
+-- lspconfig['lua_ls'].setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     settings = {
+--         Lua = {
+--             runtime = {
+--                 version = 'LuaJIT',
+--             },
+--             diagnostics = {
+--                 globals = { 'vim' },
+--             },
+--             workspace = {
+--                 library = vim.api.nvim_get_runtime_file("", true),
+--                 checkThirdParty = false,
+--             },
+--             telemetry = {
+--                 enable = false,
+--             },
+--         },
+--     },
+-- }
 
-lspconfig['yamlls'].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        yaml = {
-            schemas = {
-                ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
-            },
-        },
-    },
-}
+-- lspconfig['yamlls'].setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     settings = {
+--         yaml = {
+--             schemas = {
+--                 ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
+--             },
+--         },
+--     },
+-- }
 
 
 -- cmp / lspkind / buffer / path / cmdline / UltiSnips
