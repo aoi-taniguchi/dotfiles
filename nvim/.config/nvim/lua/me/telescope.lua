@@ -54,7 +54,8 @@ require('telescope').setup {
             override_file_sorter = true,
         },
         file_browser = {
-	        hidden = true,
+            hidden = true,
+            follow_symlinks = true,
             hijack_netrw = true,
             mappings = {
                 ["i"] = {
@@ -142,6 +143,8 @@ M.search_dotfiles = function()
     require("telescope.builtin").find_files({
         prompt_title = "< dotfiles >",
         cwd = "~/dotfiles/",
+        hidden = true,
+        follow = true,
     })
 end
 
