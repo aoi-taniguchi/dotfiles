@@ -66,3 +66,5 @@ eval "$(direnv hook zsh)"
 # flutter
 export PATH="$HOME/work/flutter/bin:$PATH"
 
+
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
