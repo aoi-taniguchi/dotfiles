@@ -26,8 +26,6 @@ zplug load
 # keybinds
 # bindkey '^ ' autosuggest-accept
 
-export PATH="$HOME/.local/bin":$PATH
-
 if command -v bat &> /dev/null; then
   alias cat="bat -pp --theme \"Visual Studio Dark+\""
   alias catt="bat --theme \"Visual Studio Dark+\""
@@ -66,5 +64,9 @@ eval "$(direnv hook zsh)"
 # flutter
 export PATH="$HOME/work/flutter/bin:$PATH"
 
-
+# nix
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# go
+export PATH="/usr/local/go/bin:$PATH"
+
