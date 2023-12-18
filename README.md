@@ -6,6 +6,7 @@
 - git
 - gh cli
 - fzf
+- lf
 - zoxide
 - lazygit
 - delta
