@@ -23,9 +23,6 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
-# keybinds
-# bindkey '^ ' autosuggest-accept
-
 if command -v bat &> /dev/null; then
   alias cat="bat -pp --theme \"Visual Studio Dark+\""
   alias catt="bat --theme \"Visual Studio Dark+\""
@@ -55,8 +52,13 @@ eval "$(pyenv init -)"
 # venv
 source ~/.venv/bin/activate
 
-# nix
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
+# lf
+function lfcd() {
+  cd $(lf -print-last-dir "$@")
+  zle reset-prompt
+}
+zle -N lfcd
+bindkey '^E' lfcd
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -66,7 +68,4 @@ export PATH="$HOME/work/flutter/bin:$PATH"
 
 # nix
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-# go
-export PATH="/usr/local/go/bin:$PATH"
 
