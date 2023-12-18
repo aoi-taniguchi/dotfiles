@@ -1,0 +1,19 @@
+set shell sh
+set icons true
+set hidden
+set drawbox
+
+cmd z %{{
+  result="$(zoxide query --exclude $PWD $@ | sed 's/\\/\\\\/g;s/"/\\"/g')"
+  lf -remote "send $id cd \"$result\""
+}}
+
+cmd zi ${{
+  result="$(zoxide query -i | sed 's/\\/\\\\/g;s/"/\\"/g')"
+  lf -remote "send $id cd \"$result\""
+}}
+
+cmd on-select &{{
+      lf -remote "send $id set statfmt \"$(exa -ld --color=always "$f")\""
+}}
+
