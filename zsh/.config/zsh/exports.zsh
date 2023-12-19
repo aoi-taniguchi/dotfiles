@@ -3,6 +3,9 @@
 HISTSIZE=1000000
 SAVEHIST=1000000
 
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 export FZF_DEFAULT_OPTS="
     --height 90% --reverse --border
     --prompt='➜  ' --margin=0,1 --inline-info

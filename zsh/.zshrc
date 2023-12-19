@@ -28,8 +28,8 @@ if command -v bat &> /dev/null; then
   alias catt="bat --theme \"Visual Studio Dark+\""
 fi
 
-export VISUAL=vim
-export EDITOR="$VISUAL"
+# fd, zoxide
+export PATH="$HOME/.local/bin:$PATH"
 
 # starship
 eval "$(starship init zsh)"
@@ -40,9 +40,6 @@ eval "$(zoxide init zsh)"
 # fzf
 if [ -e $HOME/.config/fzf/completion.zsh ]; then . $HOME/.config/fzf/completion.zsh; fi
 if [ -e $HOME/.config/fzf/key-bindings.zsh ]; then . $HOME/.config/fzf/key-bindings.zsh; fi
-
-# fd
-export PATH="$HOME/.local/bin:$PATH"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"

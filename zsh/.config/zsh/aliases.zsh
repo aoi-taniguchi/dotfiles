@@ -18,3 +18,4 @@ alias lg='lazygit'
 alias dlg='export GIT_DIR=$HOME/.dotfiles/ && export GIT_WORK_TREE=$HOME && lazygit && unset GIT_DIR && unset GIT_WORK_TREE'
 
 alias nv='~/appimages/nvim.appimage'
+alias vim=nv
