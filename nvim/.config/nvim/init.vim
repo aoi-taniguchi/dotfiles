@@ -1,4 +1,5 @@
 lua require('core.options')
+let &colorcolumn=join(range(81,120),",")
 
 " PLUGIN SETTINGS
 " TODO: migrate to lazy.nvim

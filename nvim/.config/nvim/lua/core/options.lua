@@ -30,7 +30,7 @@ local global_options = {
 }
 
 local window_options = {
-    colorcolumn = '80',
+    -- colorcolumn = '80',
     cursorline = true,
     number = true,
     relativenumber = true,
