@@ -88,6 +88,7 @@ Plug 'mfussenegger/nvim-dap-python'
 Plug 'szw/vim-maximizer'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'nvim-neotest/nvim-nio'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'folke/neodev.nvim'
 
