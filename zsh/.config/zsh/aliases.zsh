@@ -13,9 +13,7 @@ alias eta='exa -T -a -I "node_modules|.git|.cache" --color=always --icons | less
 alias lta='exa -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
 
 alias g='git'
-alias dg='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias lg='lazygit'
-alias dlg='export GIT_DIR=$HOME/.dotfiles/ && export GIT_WORK_TREE=$HOME && lazygit && unset GIT_DIR && unset GIT_WORK_TREE'
 
 alias nv='~/appimages/nvim.appimage'
 alias vim=nv
