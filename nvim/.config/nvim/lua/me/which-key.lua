@@ -244,6 +244,9 @@ local non_leader_mappings = {
     -- trouble lsp
     ['gr'] = { '<cmd>TroubleToggle lsp_references<CR>', 'go to references' },
 
+    -- toggleterm
+    -- ['<C-]>'] = { '<cmd>ToggleTerm' }
+
 }
 
 

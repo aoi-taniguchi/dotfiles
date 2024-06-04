@@ -41,3 +41,5 @@
 
 [mergetool "nvimdiff"]
     layout = LOCAL,MERGED,REMOTE
+[color]
+	ui = auto
