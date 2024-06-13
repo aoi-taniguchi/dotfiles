@@ -71,6 +71,7 @@ local mappings = {
         e = { '<cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>', 'file explorer' },
         f = { '<cmd>lua require("telescope.builtin").find_files()<CR>', 'find files' },
         g = { '<cmd>lua require("telescope.builtin").git_files()<CR>', 'find git files' },
+        m = { '<cmd>lua require("conform").format({ async = true, lsp_fallback = true })<CR>', 'format' },
         o = { '<cmd>lua require("telescope.builtin").oldfiles()<CR>', 'find old files' },
         q = { '<cmd>lua require("me.vim-flutter").flutter_quit()<CR>', 'flutter quit' },
     },

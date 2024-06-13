@@ -56,6 +56,9 @@ Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'onsails/lspkind.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
+" Formatter
+Plug 'stevearc/conform.nvim'
+
 " Snnipet Plugins
 Plug 'jiangmiao/auto-pairs'
 Plug 'SirVer/ultisnips'
