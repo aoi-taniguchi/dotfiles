@@ -2,6 +2,11 @@
 	name = aoi-taniguchi
 	email = aoi.taniguchi@woven-planet.global
 
+[alias]
+  co = checkout
+  s  = status
+  sw = switch
+
 [pull]
 	rebase = true
 
