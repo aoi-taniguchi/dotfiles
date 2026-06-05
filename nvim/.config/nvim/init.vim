@@ -1,14 +1,16 @@
 lua require('core.options')
-let &colorcolumn=join(range(81,120),",")
+" let &colorcolumn=join(range(81,120),",")
 
 " PLUGIN SETTINGS
 " TODO: migrate to lazy.nvim
 let g:python3_host_prog = $VIRTUAL_ENV .. '/bin/python'
 
+set clipboard=unnamedplus
+
 call plug#begin('~/.config/nvim/plugged')
 
 " Greeter
-Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-mini/mini.icons'
 Plug 'goolord/alpha-nvim'
 
 " Which key
@@ -25,7 +27,8 @@ Plug 'folke/noice.nvim'
 " Telescope Plugins
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.4'}
+" Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.4'}
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope-media-files.nvim'
@@ -54,7 +57,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'onsails/lspkind.nvim'
-Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'nvimtools/none-ls.nvim'
 
 " Formatter
 Plug 'stevearc/conform.nvim'
@@ -119,16 +122,12 @@ Plug 'kevinhwang91/nvim-hlslens'
 " this causes unexpected behavior when used with vim-maximizer
 " Plug 'petertriho/nvim-scrollbar'
 
-" org mode
-Plug 'nvim-neorg/neorg'
+" Zen mode
 Plug 'folke/zen-mode.nvim'
 
 " Markdown
 Plug 'dhruvasagar/vim-table-mode'
-" this causes an error when used with octo.nvim
-" Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
-" Markdown preview with glow
-Plug 'ellisonleao/glow.nvim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Project root
 Plug 'notjedi/nvim-rooter.lua'
@@ -143,10 +142,10 @@ let g:flutter_split_height = 5
 let g:flutter_autoscroll = 1
 let g:flutter_close_on_quit = 1
 
-" For fun
+" For visibility
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
-Plug 'ryanoasis/vim-devicons'
+Plug 'akinsho/bufferline.nvim'
 Plug 'arcticicestudio/nord-vim'
 
 call plug#end()

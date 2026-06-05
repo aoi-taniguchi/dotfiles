@@ -1,5 +1,7 @@
 #!/bin/sh
 
+alias tmux="tmux -f ~/.config/tmux/tmux.conf"
+
 alias e='exa --icons'
 alias l=e
 alias ls=e
@@ -15,5 +17,7 @@ alias lta='exa -T -a -I "node_modules|.git|.cache" --color=always --icons | less
 alias g='git'
 alias lg='lazygit'
 
-alias nv='~/appimages/nvim.appimage'
+# sudo ln -s ~/appimages/nvim.appimage ~/.local/bin/nv
 alias vim=nv
+
+alias ob='~/appimages/Obsidian-1.12.7.AppImage --no-sanbox'

@@ -3,6 +3,12 @@ set icons true
 set hidden
 set drawbox
 
+cmd jump ${{
+  res=$(find . -type f | fzf)
+  [ -n "$res" ] && lf -remote "send $id select \"$res\""
+}}
+map <c-f> :jump
+
 cmd z %{{
   result="$(zoxide query --exclude $PWD $@ | sed 's/\\/\\\\/g;s/"/\\"/g')"
   lf -remote "send $id cd \"$result\""
@@ -17,3 +23,10 @@ cmd on-select &{{
       lf -remote "send $id set statfmt \"$(exa -ld --color=always "$f")\""
 }}
 
+cmd open ${{
+  case "$(file --mime-type -Lb "$f")" in
+    inode/directory) lfcd "$f" ;;
+    application/pdf) evince "$f" ;;
+    *) nv "$f" ;;
+  esac
+}}

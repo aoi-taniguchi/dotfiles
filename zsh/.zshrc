@@ -28,21 +28,20 @@ if command -v bat &> /dev/null; then
   alias catt="bat --theme \"Visual Studio Dark+\""
 fi
 
-# fd, zoxide
-export PATH="$HOME/.local/bin:$PATH"
-
 # starship
 eval "$(starship init zsh)"
 
 # zoxide
 eval "$(zoxide init zsh)"
 
+# fdfind -> fd
+# ln -s $(which fdfind) ~/.local/bin/fd
+
 # fzf
 if [ -e $HOME/.config/fzf/completion.zsh ]; then . $HOME/.config/fzf/completion.zsh; fi
 if [ -e $HOME/.config/fzf/key-bindings.zsh ]; then . $HOME/.config/fzf/key-bindings.zsh; fi
 
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
@@ -60,12 +59,13 @@ bindkey '^E' lfcd
 # direnv
 eval "$(direnv hook zsh)"
 
-# flutter
-export PATH="$HOME/work/flutter/bin:$PATH"
-
 # rustup
 source "$HOME/.cargo/env"
 
 # nix
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
+# start tmux automatically
+if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ]; then
+  tmux a -t main || tmux new -s main
+fi

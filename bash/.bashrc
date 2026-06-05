@@ -141,3 +141,4 @@ source ~/.venv/bin/activate
 
 # direnv
 eval "$(/home/aoi-taniguchi/.nix-profile/bin/direnv hook bash)"
+. "$HOME/.cargo/env"

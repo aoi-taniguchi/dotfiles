@@ -77,7 +77,7 @@ function M.select_todo_app()
         elseif idx == 2 then
             vim.cmd('TodoTelescope')
         else
-            print 'selection was cancelled'
+            vim.notify('selection was cancelled', vim.log.levels.INFO)
         end
     end
     )

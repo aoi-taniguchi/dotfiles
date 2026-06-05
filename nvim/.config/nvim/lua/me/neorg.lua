@@ -1,11 +1,11 @@
 require('neorg').setup {
     load = {
         ["core.defaults"] = {},
-        ["core.concealer"] = {},
+        -- ["core.concealer"] = {},
         ["core.dirman"] = {
             config = {
                 workspaces = {
-                    notes = "~/notes",
+                    notes = "~/neorg",
                 },
             },
         },

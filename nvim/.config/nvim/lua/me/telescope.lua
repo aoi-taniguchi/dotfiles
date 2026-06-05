@@ -1,5 +1,30 @@
 local actions = require('telescope.actions')
 local fb_actions = require('telescope._extensions.file_browser.actions')
+local action_state = require('telescope.actions.state')
+
+
+local function open_with_system(prompt_bufnr)
+    local entry = action_state.get_selected_entry()
+    actions.close(prompt_bufnr)
+
+    local path = entry.path
+        or entry.filename
+        or (entry.Path and entry.Path.filename)
+        or entry.value
+
+    if not path then
+        vim.notify("Could not determine file path", vim.log.levels.ERROR)
+      return
+    end
+
+    -- vim.system({ "xdg-open", path }, { detach = true })
+    vim.system({ "gio", "open", path }, { detach = true })
+    -- vim.fn.jobstart(
+    --     { "tmux", "run-shell", "gio open " .. vim.fn.shellescape(path) },
+    --     { detach = true }
+    -- )
+end
+
 
 require('telescope').setup {
     defaults = {
@@ -21,6 +46,7 @@ require('telescope').setup {
             i = {
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
+                ["<C-o>"] = open_with_system,
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
                 ["<Tab>"] = actions.toggle_selection,
                 ["<C-/>"] = actions.which_key,
@@ -28,6 +54,7 @@ require('telescope').setup {
             n = {
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
+                ["<C-o>"] = open_with_system,
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
                 ["<Tab>"] = actions.toggle_selection,
                 ["<S-j>"] = actions.preview_scrolling_down,
@@ -70,7 +97,7 @@ require('telescope').setup {
                     ["<C-m>"]  = fb_actions.move,
                     ["<C-y>"]  = fb_actions.copy,
                     ["<C-d>"]  = fb_actions.remove,
-                    ["<C-o>"]  = fb_actions.open,
+                    -- ["<C-o>"]  = fb_actions.open,
                     ["<C-f>"]  = fb_actions.toggle_browser,
                     ["<C-h>"]  = fb_actions.toggle_hidden,
                     ["<C-s>"]  = fb_actions.toggle_all,
@@ -86,7 +113,7 @@ require('telescope').setup {
                     ["<C-m>"]  = fb_actions.move,
                     ["<C-y>"]  = fb_actions.copy,
                     ["<C-d>"]  = fb_actions.remove,
-                    ["<C-o>"]  = fb_actions.open,
+                    -- ["<C-o>"]  = fb_actions.open,
                     ["<C-f>"]  = fb_actions.toggle_browser,
                     ["<C-h>"]  = fb_actions.toggle_hidden,
                     ["<C-s>"]  = fb_actions.toggle_all,
@@ -109,7 +136,8 @@ require('telescope').setup {
             layout_config = {
                 preview_height = 0.8,
             },
-            diff_context_lines = vim.o.scrolloff,
+            -- diff_context_lines = vim.o.scrolloff,
+            vim_diff_opts = { ctxlen = vim.o.scrolloff },
             entry_format = "state #$ID, $STAT, $TIME",
             mappings = {
                 i = {

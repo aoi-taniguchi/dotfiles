@@ -1,5 +1,7 @@
 local wk = require('which-key')
-wk.setup {}
+wk.setup({
+  notify = false,
+})
 
 -- NORMAL MODE with the leader --
 local opts = {
@@ -127,7 +129,7 @@ local mappings = {
     -- preview
     p = {
         name = 'preview',
-        m = { '<cmd>Glow<CR>', 'preview markdown with glow' },
+        m = { '<cmd>MarkdownPreviewToggle<CR>', 'toggle markdown-preview' },
     },
 
     -- delete buffer

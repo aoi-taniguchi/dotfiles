@@ -3,7 +3,7 @@
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-export VISUAL=vim
+export VISUAL=nv
 export EDITOR="$VISUAL"
 
 export FZF_DEFAULT_OPTS="
@@ -16,3 +16,13 @@ export FZF_CTRL_T_COMMAND="fd --type f --hidden --follow --exclude .git"
 export FZF_CTRL_T_OPTS="
     --select-1 --exit-0
     --preview 'bat -r :100 --color=always --style=header,grid,numbers {}'"
+
+# fd, zoxide, nv
+export PATH="$HOME/.local/bin:$PATH"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+
+# flutter
+export PATH="$HOME/work/flutter/bin:$PATH"
+

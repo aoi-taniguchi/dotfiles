@@ -58,18 +58,3 @@ for k, v in pairs(buffer_options) do
     vim.bo[k] = v
 end
 
--- clipboard
-if vim.env.TMUX then
-    vim.g.clipboard = {
-        name = 'tmux',
-        copy = {
-            ["+"] = { 'tmux', 'load-buffer', '-w', '-' },
-            ["*"] = { 'tmux', 'load-buffer', '-w', '-' },
-        },
-        paste = {
-            ["+"] = { 'tmux', 'save-buffer', '-' },
-            ["*"] = { 'tmux', 'save-buffer', '-' },
-        },
-        cache_enabled = false,
-    }
-end
